@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 :root {
     --cs-color01: #21d5fa;
     --cs-color02: #17b5d4;
@@ -7,9 +6,11 @@
     --cs-color04: #06748a;
     --cs-color05: #015566;
     --cs-color06: #01333d;
-
-    /* --cs-color-copy: #fcb4a0; */
-    --cs-color-copy: #17b5d4;
+    --cs-color07: #ffffff;
+    --cs-color08: #a3a1a1;
+    --cs-color09: #000000;
+    --cs-color10: #0307fa;
+    --cs-color11: #ff3c78;
 }
 
 * {
@@ -48,7 +49,6 @@ nav.abajo {
     height: 70px;
     padding: 6px;
     margin: 8px 0 0 16px;
-  
     display: flex;
     align-items: center;
 }
@@ -80,7 +80,7 @@ nav.abajo {
 }
 
 .main-name {
-    color:#21d5fa;
+    color: var(--cs-color01);
     font-weight: bold;
     text-transform: uppercase;
     font-size: 1.6rem;
@@ -88,20 +88,20 @@ nav.abajo {
 }
 
 .main-name:hover {
-    text-shadow: 2px 2px #ffffff;
+    text-shadow: 2px 2px var(--cs-color07);
     transition: 0.5s;
 }
 
 .main-namesito {
-    color: #ffffff;
+    color: var(--cs-color07);
     font-size: 0.72rem;
-    text-shadow: 1px 1px 0 #21d5fa;
-} 
+    text-shadow: 1px 1px 0 var(--cs-color01);
+}
 
 /* Preparado para que se vea el nombre del usuario que esta logueado */
 .user-name {
     color: #ff3c78;
-    text-shadow: 2px 2px 0px #ffffff;
+    text-shadow: 1px 1px 0px var(--cs-color07);
     padding: 6px;
     margin-left: 10px;
     font-size: 1rem;
@@ -112,7 +112,6 @@ nav.abajo {
 
 nav ul {
     float: right;
-
     display: flex;
     align-items: center;
 }
@@ -125,7 +124,7 @@ nav ul li {
 
 nav ul li a {
     position: relative;
-    color: #21d5fa;
+    color: var(--cs-color01);
     text-shadow: 2px 2px 0px #5f5f5f;
     font-size: 1rem;
     font-weight: 600;
@@ -136,18 +135,14 @@ nav ul li a {
 
 .fa-home {
     font-size: 1.125rem;
-    color: #0307fa;
-}
-
-nav.abajo .fa-home {
-    color: #0307fa
+    color: var(--cs-color10);
 }
 
 /* nuevo */
 li a:after {
     content: "";
     position: absolute;
-    background-color: #ff3c78;
+    background-color: var(--cs-color11);
     height: 4px;
     width: 0;
     left: 0;
@@ -156,7 +151,7 @@ li a:after {
 }
 
 li a:hover {
-    color: #ffffff;
+    color: var(--cs-color07);
 }
 
 li a:hover:after {
@@ -172,35 +167,66 @@ li a:hover:after {
     padding: 6px;
 }
 
+
+
+
+
+.dropdown {
+    position: relative;
+    /* display: inline-block; */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    min-width: 160px;
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+    z-index: 10;
+}
+
+.dropdown-content li {
+    margin: 0;
+    padding: 0 12px;
+    height: auto;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+
+
 .fa-power-off,
 .fa-user,
 .fa-cart-shopping {
     font-size: 1.125rem;
-    color: #fff100;
+    color: var(--cs-color01);
     cursor: pointer;
 }
 
 .container-user a {
-    position: relative;
+    position: relative; /* Hacer el contenedor relativo para posicionar el span */
     /* color: inherit; */ /* Mantener el color por defecto */
 }
 
 .container-user a span {
-    position: absolute;
-    top: -8px;
-    right: -12px;
-    color: white; 
+    position: absolute; /* Posicionar relativo al ícono */
+    top: -8px; /* Ajusta según el tamaño del ícono */
+    right: -12px; /* Ajusta según la distancia del borde */
+    color: var(--cs-color07); 
     background-color: red;
-    padding: 3px 6px;
-    font-size: 10px;
-    border-radius: 50%;
-    font-weight: bold;
+    padding: 3px 6px; /* Tamaño del círculo */
+    font-size: 10px; /* Tamaño del texto */
+    border-radius: 50%; /* Convertirlo en un círculo */
+    font-weight: bold; /* Hacer que el texto resalte */
     text-align: center;
 }
 
 .checkbtn {
     font-size: 34px;
-    color: white;
+    color: var(--cs-color07);
     float: right;
     line-height: 80px;
     margin-right: 20px;
@@ -214,20 +240,20 @@ li a:hover:after {
 
 /* nav.abajo .main-name, */
 nav.abajo ul li a {
-    color: white;
+    color: var(--cs-color07);
 }
 
 nav.abajo .logo,
 nav.abajo ul li a:hover {
-    color: #21d5fa;
+    color: var(--cs-color01);
 }
 
 nav.abajo .main-name {
-    color: #ffffff;
+    color: var(--cs-color07);
 }
 
 nav.abajo .main-name:hover {
-    text-shadow: 2px 2px #21d5fa;
+    text-shadow: 2px 2px var(--cs-color01);
 }
 
 /**********************************************/
