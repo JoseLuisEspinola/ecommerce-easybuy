@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="Imagen/jpg" href="/img/logo3.jpg">
+    <link rel="stylesheet" href="/css/ofertas.css">
+    <title>ShopEase</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="/js/scrollreveal.js"></script>   <!-- libreria para animaciones -->
+</head>
+
+<body>
+    <!-- Barra de navegacion o NavBar -->
+    <nav class="navbar">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <a href="disenador.html" class="enlace">
+            <img src="./img/logo3.jpg" class="logo" alt="Imagen Logo">
+            <div class="names">
+                <span class="main-name">ShopEase</span>
+                <span class="main-namesito">La tienda, a tu manera</span>
+            </div>
+            <p class="user-name"></p>
+        </a>
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-home" title="Inicio"></i></a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="galerias.html">Galeria</a></li>
+            <li><a href="resenas.html">Reseñas</a></li>
+            <li><a href="index.html#section-form">Contacto</a></li>
+            <li><a href="usuarios.html">Usuarios</a></li>
+
+            <div class="container-user">
+                <a href="#" onclick="cerrarSesion()"><i class="fa fa-power-off" aria-hidden="true" title="Cerar Sesión"></i></a>
+                <a href="login.html"><i class="fa-solid fa-user" title="Usuario"></i></a>
+                <a href="carrito.html"><i class="fa-solid fa-cart-shopping" title="Carrito"><span>0</span></i></a>
+            </div>
+        </ul>
+    </nav>
+
+    <!-- JavaScript donde se captura la parte de arriba de la pagina: header-->
+    <script>
+        window.addEventListener("scroll", function(){
+            var header = document.querySelector("nav");
+            header.classList.toggle("abajo", window.scrollY>0);
+        })
+    </script>    
+
+    <!-- Zona central de la primer pagina -->
+    <section id="zona1">
+        <div class="presentacion">
+            <h1 class="title-ofertas">OFERTAS</h1>
+            <p class="renglon1">"En <span>ShopEase</span> creemos que la calidad no tiene por qué 
+               ser cara. Por eso te ofrecemos una selección de productos de primeras 
+               marcas a precios de fábrica. Descubre nuestras ofertas semanales y 
+               ahorra en tus compras sin renunciar a la calidad. ¡Comprar con nosotros 
+               es fácil y económico!"
+            </p>
+
+            <div class="flecha-abajo">
+                <a href="#container-masvendidos" title="Ofertas"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        <a href="#" class="flecha-arriba">
+            <img src="./img/flecha1.png" alt="Flecha Arriba" title="Inicio">
+        </a>
+    </section>
+
+    
+    <!-- ************Cards ofertas ***************** --> 
+    <section id="container-masvendidos">
+        <h2 id="ofertas">¡¡¡OFERTAS!!!</h2>
+        <div class="card-container-ga">
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="/img/galeria/ofe-img1.jpg" alt="Silla de espuma giratoria">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Silla Giratoria</h3>
+                </div>
+                <div class="card-description-ga">
+                    <p>Amazon Basics - Silla de espuma giratoria y ajustable con reposacabezas</p>
+                </div>
+                <div class="card-precio">
+                    <p>$133000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img2.jpg" alt="Silla de oficina">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Silla Ergonómica</h3>
+                </div>
+                <div class="card-description-ga">
+                    <p>Silla de oficina de malla ergonómica con parte delantera y trasera 
+                        arriba y abajo, 2 dimensiones, soporte lumbar ajustable y brazo abatible</p>
+                </div>
+                <div class="card-precio">
+                    <p>$110000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img3.jpg" alt="Mini Pc Peladn">
+                </div>
+                <div class="card-title-ga">
+                    <h3>PELADN Mini PC</h3>
+                </div>
+                <div class="card-description-ga">
+                    <p>PELADN Mini PC de sobremesa Intel 11ª generación N5095 (hasta 2.9 GHz), 
+                        8 GB de RAM DDR4, 256 GB SSD, 4K HD, BT4.2, Dual HDMI, WiFi 2.4G/5G, 
+                        Gigabit Ethernet. PC de escritorio pequeño</p>
+                </div>
+                <div class="card-precio">
+                    <p>$160000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img4.jpg" alt="Pc escritorio STGAubron">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Pc STGAubron</h3>
+                </div>
+                <div class="card-description-ga">
+                    <p>STGAubron Computadora de escritorio para juegos, Intel Core I7 3.4 
+                        GHz hasta 3.9 GHz, Radeon RX 580 8G GDDR5, 16G RAM, 512G SSD, WiFi, 
+                        Bluetooth 5.0, RGB Fanx6, alfombrilla de mouse RGB.</p>
+                </div>
+                <div class="card-precio">
+                    <p>$450000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img5.jpg" alt="Altavoces estereo Bluetooth">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Altavoces estereo Bluetooth</h3>
+                </div>
+                <div class="card-description-ga">
+                    <p>Altavoces Basico 2 altavoces USB Plug-n-Play para PC o portátil, color 
+                        negro - Juego de 2</p>
+                </div>
+                <div class="card-precio">
+                    <p>$16000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img6.jpg" alt="Altavoces con iluminación">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Altavoces con iluminación</h3>
+                </div>
+                <div class="card-description-ga">
+                    <p>Altavoces de computadora, altavoces de PC con 6 modos de iluminación, 
+                        altavoces de computadora alimentados por USB para monitor de escritorio 
+                        con 2 puertos de refuerzo de graves.</p>
+                </div>
+                <div class="card-precio">
+                    <p>$40000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img7.jpg" alt="Mini Motosierra'">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Mini Motosierra Eléctrica</h3>
+                </div>
+                <div class="card-description-ga">
+                    <p>Saker Mini motosierra, motosierra eléctrica portátil inalámbrica, 
+                        pequeña sierra de cadena de mano, tijeras de podar para ramas.</p>
+                </div>
+                <div class="card-precio">
+                    <p>$90000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img8.jpg" alt="Sierra Circular Skil">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Sierra Circular Skil</h3>
+                </div>
+                <div class="card-description-ga">
+                    <P>Skil - Sierra circular con kit de disco de repuesto, medida 7"1/4.</P>
+                </div>
+                <div class="card-precio">
+                    <p>$30000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img9.jpg" alt="Zapatilla Alestor">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Zapatilla Alestor 12 tomas</h3>
+                </div>
+                <div class="card-description-ga">
+                    <P>Zapatilla de alimentación ALESTOR Protector de sobretensiones con 12 
+                        tomas y 4 puertos USB, cable de extensión de 6 pies (1875W/15A), color 
+                        negro.</P>
+                </div>
+                <div class="card-precio">
+                    <p>$12000</p>
+                </div>
+            </div>
+            
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img10.webp" alt="Samsung Galaxy A9+">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Samsung Galaxy A9+</h3>
+                </div>
+                <div class="card-description-ga">
+                    <P>Samsung Galaxy Tab A9+ Tablet Android de 11 pulgadas y 64 GB, pantalla 
+                        grande, altavoces cuádruples, chipset mejorado, pantalla de múltiples 
+                        ventanas, diseño delgado, ligero, duradero.</P>
+                </div>
+                <div class="card-precio">
+                    <p>$150000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img11.jpg" alt="Luz de lectura para cuello">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Luz de lectura para cuello</h3>
+                </div>
+                <div class="card-description-ga">
+                    <P>Glocusent - Luz de lectura para el cuello, 3 colores, 6 niveles de 
+                        brillo, brazos flexibles, recargable, larga duración, perfecta para leer 
+                        en la cama, tejer, camping y reparación.</P>
+                </div>
+                <div class="card-precio">
+                    <p>$18000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img12.jpg" alt="Robot aspiradora AI Ultra">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Aspiradora Robot AI Ultra</h3>
+                </div>
+                <div class="card-description-ga">
+                    <P>Shark Robot aspirador AI Ultra con control de voz con navegación Matrix 
+                        Clean, mapeo del hogar, capacidad de 60 días, base de autovaciado para 
+                        hogares con espacios reducidos.</P>
+                </div>
+                <div class="card-precio">
+                    <p>$300000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img13.jpg" alt="Pistola para masajes">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Pistola para masajes</h3>
+                </div>
+                <div class="card-description-ga">
+                    <P>Shark Robot aspirador AI Ultra con control de voz con navegación Matrix 
+                        Clean, mapeo del hogar, capacidad de 60 días, base de autovaciado para 
+                        hogares con espacios reducidos.</P>
+                </div>
+                <div class="card-precio">
+                    <p>$300000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img14.jpg" alt="Mini altavoz Bluetooth portátil">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Mini altavoz Bluetooth portátil</h3>
+                </div>
+                <div class="card-description-ga">
+                    <P>JBL Go 3 Eco - Mini altavoz Bluetooth portátil, audio grande y graves 
+                        fuertes, IP67 impermeable y resistente al polvo, 5 horas de tiempo de 
+                        reproducción, fabricado en parte con materiales reciclados</P>
+                </div>
+                <div class="card-precio">
+                    <p>$30000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img15.jpg" alt="Samsung Galaxy S24 Ultra">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Samsung Galaxy S24 Ultra</h3>
+                </div>
+                <div class="card-description-ga">
+                    <P>Samsung Teléfono celular Galaxy S24 Ultra, teléfono inteligente AI de 
+                        512 GB, Android desbloqueado, 200 MP, cámaras zoom 100x, procesador 
+                        rápido, batería de larga duración, pantalla de borde a borde.</P>
+                </div>
+                <div class="card-precio">
+                    <p>$1070000</p>
+                </div>
+            </div>
+
+            <div class="card-ga">
+                <div class="card-img-ga">
+                    <img src="./img/galeria/ofe-img16.jpg" alt="Monitor Gobi 27'">
+                </div>
+                <div class="card-title-ga">
+                    <h3>Monitor Acer 27'</h3>
+                </div>
+                <div class="card-description-ga">
+                    <P>Acer KB272 G0bi Monitor de oficina para juegos de marco cero IPS Full 
+                        HD de 27 pulgadas (1920 x 1080), compatible con sincronización adaptativa 
+                        (compatible con FreeSync), actualización de hasta 120.</P>
+                </div>
+                <div class="card-precio">
+                    <p>$90000</p>
+                </div>
+            </div>
+
+        </div>
+    </section>   <!-- fin de las card -->
+
+
+    <!-- ********* Seccion de footer ******** -->
+    <footer id="piedepagina">
+        <p class="contac">Contacto</p>
+        <div class="container">
+            <p class="mimail">
+                <a href="mailto:jle36@hotmail.com?subject=Consulta&body=Hola%2C%20quisiera%20más%20información%20sobre%20...">jle36@hotmail.com</a>
+                - Cel. +54-3487-616158
+            </p>
+            <div class="sociales">
+                <a href="https://www.linkedin.com/in/jose-luis-espinola-a036b7125/" target="_blank" title="Ir a LinkedIn">
+                    <img class="linkedin" src="./img/Linkedin.png" alt="Linkedin">
+                </a>
+                <a href="https://github.com/JoseLuisEspinola" target="_blank" title="Ir a GitHub">
+                    <img class="github" src="./img/github1.png" alt="Github">
+                </a>
+                <a href="https://www.facebook.com/joseluis.espinola1" target="_blank" title="Ir a Facebook">
+                    <img class="facebook" src="./img/facebook.png" alt="Facebook">
+                </a>
+                <!-- <a href="https://www.instagram.com/jle36/" target="_blank" title="Ir a Instagram">
+                    <img class="instagram" src="./img/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://x.com/jle36" target="_blank" title="Ir a Twitter">
+                    <img class="twitter" src="./img/Twitter.png" alt="Twitter">
+                </a> -->
+                <a href="https://api.whatsapp.com/send?phone=+543487616158&text=Hola%2C%20me%20gustaría%20realizar%20una%20página%20web...%20podrías%20contarme?" target="_blank" title="Ir a Whatsapp">
+                    <img class="whatsapp" src="./img/Whatsapp.png" alt="Whatsapp">
+                </a>
+            </div>
+            <a class="terminos" href="terminos.html">Términos y condiciones</a>
+        </div>
+
+        <!-- ******** Copyright ******** -->
+        <p class="copyright">&copy; <span id="copyright-year"></span> Control de Stock - Todos los derechos reservados - Espinola José Luis</p>
+        <script>
+            const currentYear = new Date().getFullYear();
+            document.getElementById('copyright-year').textContent = currentYear;
+        </script>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/81581fb069.js"
+        crossorigin="anonymcus">
+    </script>
+    <script src="/js/contador-carrito.js"></script>   <!-- referencia solo a poner el numerito actualizado del carrito -->
+    <script src="/js/title.js"></script>
+    <script src="/js/cerrarsesion.js"></script>
+    <script src="/js/user-name.js"></script>
+    <script src="/js/animation.js"></script>  <!-- archivo que contiene animaciones -->
+</body>
+</html>

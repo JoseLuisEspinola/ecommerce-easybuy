@@ -1,0 +1,38 @@
+body {
+    /* width: 100%; */
+    /* height: 100%; */
+    background-color: antiquewhite;
+}
+
+.container-spinner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 36px;
+    height: 36px;
+    margin-top: calc(100% - 80%);
+    border-radius: 50%;
+    border-left-color: rgb(109, 196, 250);
+
+    animation: spinner 1s ease infinite;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.texto-cargando {
+    margin: 10px
+}

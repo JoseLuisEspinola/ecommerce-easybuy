@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="Imagen/jpg" href="/img/logo3.jpg">
+    <link rel="stylesheet" href="/css/compras.css">
+    <title>ShopEase</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Barra de navegacion o NavBar -->
+    <nav class="navbar">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <a href="disenador.html" class="enlace">
+            <img src="./img/logo3.jpg" class="logo" alt="Imagen Logo">
+            <div class="names">
+                <span class="main-name">ShopEase</span>
+                <span class="main-namesito">La tienda, a tu manera</span>
+            </div>
+            <p class="user-name"></p>
+        </a>
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-home" title="Inicio"></i></a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="ofertas.html">Ofertas</a></li>
+            <li><a href="spinner.html">Galeria</a></li>
+            <li><a href="resenas.html">Reseñas</a></li>
+            <li><a href="index.html#section-form">Contacto</a></li>
+            <li><a href="usuarios.html">Usuarios</a></li>
+
+            <div class="container-user">
+                <a href="#" onclick="cerrarSesion()"><i class="fa fa-power-off" aria-hidden="true" title="Cerar Sesión"></i></a>
+                <a href="login.html"><i class="fa-solid fa-user" title="Usuario"></i></a>
+                <a href="carrito.html"><i class="fa-solid fa-cart-shopping" title="Carrito"><span>0</span></i></a>
+            </div>
+        </ul>
+    </nav>
+
+    <!-- JavaScript donde se captura la parte de arriba de la pagina: header-->
+    <script>
+        window.addEventListener("scroll", function(){
+            var header = document.querySelector("nav");
+            header.classList.toggle("abajo", window.scrollY>0);
+        })
+    </script>    
+
+    <!-- Zona central de la primer pagina -->
+    <section id="zona1">
+        <section id="section-form">
+            <h2 class="titulo-form">COMPRAS</h2>
+            <!-- <form action="./php/enviar.php" method="post"> -->
+            <form action="https://formspree.io/f/mvgperpl" method="POST" target="_blank">
+                <!-- <p class="anotate">¡Puedes hacernos llegar tu consulta a traves de <abbr title="attribute">este</abbr> formulario!</p> -->
+
+                <div class="form-group group1">
+                    <div class="group-id_proveedor">
+                        <label for="id_proveedor">Proveedor:</label>
+                        <input class="id_proveedor" id="id_proveedor" type="number" name="id_proveedor" placeholder="ID proveedor" required>
+                    </div>
+                    <div class="group-proveedor">
+                        <label for="proveedor">Proveedor:</label>
+                        <input class="proveedor" id="proveedor" type="text" name="proveedor" placeholder="Nombre Proveedor" disabled>
+                    </div>
+                    <div class="group-direccion">
+                        <label for="direccion">Dirección:</label>
+                        <input class="direccion" id="direccion" type="text" name="direccion" placeholder="Dirección" disabled>
+                    </div>
+                    <div class="group-razonsocial">
+                        <label for="razonsocial">R.Social:</label>
+                        <input class="razonsocial" id="razonsocial" type="text" name="razonsocial" placeholder="Razon Social" disabled>
+                    </div>
+                    <div class="group-cuitprov">
+                        <label for="cuitprov">CUIT</label>
+                        <input class="cuitprov" id="cuitprov" type="number" name="cuitprov" placeholder="CUIT" disabled>
+                    </div>
+
+                    
+                </div>
+                
+                <hr class="division">
+                
+                <div class="form-group group2">
+                    <div class="group-comprobante">
+                        <label for="comprobante">Comprobante:</label>
+                        <input class="comprobante" id="comprobante" type="text" name="comprobante" placeholder="Nro Comprobante" pattern="^[A-Z]-\d{4}-\d{8}$" required>
+                    </div>
+                    <div class="group-neto">
+                        <label for="neto">Neto:</label>
+                        <input class="neto" id="neto" type="number" name="neto" placeholder="Importe Neto" min="1" max="100000000" required>
+                    </div>
+                    <div class="group-percepcion">
+                        <label for="percepcion">Perc.IIBB:</label>
+                        <input class="percepcion" id="percepcion" type="number" name="percepcion" placeholder="Percepcion IIBB" min="0" max="100000000">
+                    </div>
+                    <div class="group-tipoiva">
+                        <label for="tipoiva">%IVA</label>
+                        <select name="tipoiva" id="tipoiva">
+                            <option value="21">21%</option>
+                            <option value="10.5">10.5%</option>
+                        </select>
+                    </div>
+                    <div class="group-iva">
+                        <label for="iva">I.V.A:</label>
+                        <input class="iva" id="iva" type="number" name="iva" placeholder="IVA" disabled>
+                    </div>
+                    <div class="group-total">
+                        <label for="total">TOTAL:</label>
+                        <input class="total" id="total" type="number" name="total" placeholder="Imp. TOTAL" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group group3">
+                    <div class="group-observacion">
+                        <textarea name="observacion" placeholder="Observaciones" minlength="8" required></textarea>
+                    </div>
+                    <div class="group-bottom">
+                        <input type="reset" class="boton reset" title="Limpiar datos" value="Borrar">
+                        <input type="submit" class="boton submit" title="Guardar datos" value="Guardar">
+                    </div>
+                </div>
+                
+                <!-- <div class="form-group group4">
+                    <div class="group-bottom">
+                        <input type="submit" id="boton" title="Clic para enviar el mail" value="GUARDAR">
+                        <input type="reset" id="boton" title="Clic limpia todas las entradas" value="BORRAR">
+                    </div>
+                </div> -->
+            </form>
+        </section>
+
+        <section id="container-lista">
+            <h2>Lista de Comprobantes</h2>
+            <div class="table-wrapper">
+                <table class="style-table" id="tabla-genero">
+                    <thead>
+                        <tr>
+                            <th>COMPROBANTE</th>
+                            <th>PROVEEDOR</th>
+                            <th class="col-num">IMPORT NETO</th>
+                            <th class="col-num">PERCEP.IIBB</th>
+                            <th class="col-num">%IVA</th>
+                            <th class="col-num">I.V.A.</th>
+                            <th class="col-num">IMPORTE TOTAL</th>
+                            <th>OBSERVACIONES</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>A-0001-00001234</td>
+                            <td>Distribuidora Quilmes</td>
+                            <td class="col-num">1000000</td>
+                            <td class="col-num">20000</td>
+                            <td class="col-num">21</td>
+                            <td class="col-num">210000</td>
+                            <td class="col-num">1230000</td>
+                            <td>Factura de pago a 5 dias, por esta vez como exepcion</td>
+                            <td class="td-btn">
+                                <a class="btn btn-editar" href="">Editar</a>
+                                <a onclick="return confirm('¿Seguro desea borrar el comprobante?')" class="btn btn-borrar" href="">Eliminar</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>A-0001-00001234</td>
+                            <td>Distribuidora Quilmes</td>
+                            <td class="col-num">1000000</td>
+                            <td class="col-num">20000</td>
+                            <td class="col-num">21</td>
+                            <td class="col-num">210000</td>
+                            <td class="col-num">1230000</td>
+                            <td>Factura de pago a 5 dias, por esta vez como exepcion</td>
+                            <td class="td-btn">
+                                <a class="btn btn-editar" href="">Editar</a>
+                                <a onclick="return confirm('¿Seguro desea borrar el comprobante?')" class="btn btn-borrar" href="">Eliminar</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>A-0001-00001234</td>
+                            <td>Distribuidora Quilmes</td>
+                            <td class="col-num">1000000</td>
+                            <td class="col-num">20000</td>
+                            <td class="col-num">21</td>
+                            <td class="col-num">210000</td>
+                            <td class="col-num">1230000</td>
+                            <td>Factura de pago a 5 dias, por esta vez como exepcion</td>
+                            <td class="td-btn">
+                                <a class="btn btn-editar" href="">Editar</a>
+                                <a onclick="return confirm('¿Seguro desea borrar el comprobante?')" class="btn btn-borrar" href="">Eliminar</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>A-0001-00001234</td>
+                            <td>Distribuidora Quilmes</td>
+                            <td class="col-num">1000000</td>
+                            <td class="col-num">20000</td>
+                            <td class="col-num">21</td>
+                            <td class="col-num">210000</td>
+                            <td class="col-num">1230000</td>
+                            <td>Factura de pago a 5 dias, por esta vez como exepcion</td>
+                            <td class="td-btn">
+                                <a class="btn btn-editar" href="">Editar</a>
+                                <a onclick="return confirm('¿Seguro desea borrar el comprobante?')" class="btn btn-borrar" href="">Eliminar</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>A-0001-00001234</td>
+                            <td>Distribuidora Quilmes</td>
+                            <td class="col-num">1000000</td>
+                            <td class="col-num">20000</td>
+                            <td class="col-num">21</td>
+                            <td class="col-num">210000</td>
+                            <td class="col-num">1230000</td>
+                            <td>Factura de pago a 5 dias, por esta vez como exepcion</td>
+                            <td class="td-btn">
+                                <a class="btn btn-editar" href="">Editar</a>
+                                <a onclick="return confirm('¿Seguro desea borrar el comprobante?')" class="btn btn-borrar" href="">Eliminar</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>A-0001-00001234</td>
+                            <td>Distribuidora Quilmes</td>
+                            <td class="col-num">1000000</td>
+                            <td class="col-num">20000</td>
+                            <td class="col-num">21</td>
+                            <td class="col-num">210000</td>
+                            <td class="col-num">1230000</td>
+                            <td>Factura de pago a 5 dias, por esta vez como exepcion</td>
+                            <td class="td-btn">
+                                <a class="btn btn-editar" href="">Editar</a>
+                                <a onclick="return confirm('¿Seguro desea borrar el comprobante?')" class="btn btn-borrar" href="">Eliminar</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>A-0001-00001234</td>
+                            <td>Distribuidora Quilmes</td>
+                            <td class="col-num">1000000</td>
+                            <td class="col-num">20000</td>
+                            <td class="col-num">21</td>
+                            <td class="col-num">210000</td>
+                            <td class="col-num">1230000</td>
+                            <td>Factura de pago a 5 dias, por esta vez como exepcion</td>
+                            <td class="td-btn">
+                                <a class="btn btn-editar" href="">Editar</a>
+                                <a onclick="return confirm('¿Seguro desea borrar el comprobante?')" class="btn btn-borrar" href="">Eliminar</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>A-0001-00001234</td>
+                            <td>Distribuidora Quilmes</td>
+                            <td class="col-num">1000000</td>
+                            <td class="col-num">20000</td>
+                            <td class="col-num">21</td>
+                            <td class="col-num">210000</td>
+                            <td class="col-num">1230000</td>
+                            <td>Factura de pago a 5 dias, por esta vez como exepcion</td>
+                            <td class="td-btn">
+                                <a class="btn btn-editar" href="">Editar</a>
+                                <a onclick="return confirm('¿Seguro desea borrar el comprobante?')" class="btn btn-borrar" href="">Eliminar</a>
+                            </td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </section>   <!-- container-lista -->
+    </section>
+
+
+    <!-- ********* Seccion de footer ******** -->
+    <footer id="piedepagina">
+        <p class="contac">Contacto</p>
+        <div class="container">
+            <p class="mimail">
+                <a href="mailto:jle36@hotmail.com?subject=Consulta&body=Hola%2C%20quisiera%20más%20información%20sobre%20...">jle36@hotmail.com</a>
+                - Cel. +54-3487-616158
+            </p>
+            <div class="sociales">
+                <a href="https://www.linkedin.com/in/jose-luis-espinola-a036b7125/" target="_blank" title="Ir a LinkedIn">
+                    <img class="linkedin" src="./img/Linkedin.png" alt="Linkedin">
+                </a>
+                <a href="https://github.com/JoseLuisEspinola" target="_blank" title="Ir a GitHub">
+                    <img class="github" src="./img/github1.png" alt="Github">
+                </a>
+                <a href="https://www.facebook.com/joseluis.espinola1" target="_blank" title="Ir a Facebook">
+                    <img class="facebook" src="./img/facebook.png" alt="Facebook">
+                </a>
+                <!-- <a href="https://www.instagram.com/jle36/" target="_blank" title="Ir a Instagram">
+                    <img class="instagram" src="./img/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://x.com/jle36" target="_blank" title="Ir a Twitter">
+                    <img class="twitter" src="./img/Twitter.png" alt="Twitter">
+                </a> -->
+                <a href="https://api.whatsapp.com/send?phone=+543487616158&text=Hola%2C%20me%20gustaría%20realizar%20una%20página%20web...%20podrías%20contarme?" target="_blank" title="Ir a Whatsapp">
+                    <img class="whatsapp" src="./img/Whatsapp.png" alt="Whatsapp">
+                </a>
+            </div>
+            <a class="terminos" href="terminos.html">Términos y condiciones</a>
+        </div>
+
+        <!-- ******** Copyright ******** -->
+        <p class="copyright">&copy; <span id="copyright-year"></span> Control de Stock - Todos los derechos reservados - Espinola José Luis</p>
+        <script>
+            const currentYear = new Date().getFullYear();
+            document.getElementById('copyright-year').textContent = currentYear;
+        </script>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/81581fb069.js"
+        crossorigin="anonymcus">
+    </script>
+    <script src="/js/contador-carrito.js"></script>   <!-- referencia solo a poner el numerito actualizado del carrito -->
+    <script src="/js/title.js"></script>
+    <script src="/js/cerrarsesion.js"></script>
+    <script src="/js/user-name.js"></script>
+</body>
+</html>

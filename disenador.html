@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="Imagen/jpg" href="/img/logo3.jpg">
+    <link rel="stylesheet" href="/css/disenador.css">
+    <title>ShopEase</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Barra de navegacion o NavBar -->
+    <nav class="navbar">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <a href="#" class="enlace">
+            <img src="./img/logo3.jpg" class="logo" alt="Imagen Logo">
+            <div class="names">
+                <span class="main-name">ShopEase</span>
+                <span class="main-namesito">La tienda, a tu manera</span>
+            </div>
+            <p class="user-name"></p>
+        </a>
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-home" title="Inicio"></i></a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="ofertas.html">Ofertas</a></li>
+            <li><a href="resenas.html">Reseñas</a></li>
+            <li><a href="index.html#section-form">Contacto</a></li>
+            <li><a href="usuarios.html">Usuarios</a></li>
+            
+            <div class="container-user">
+                <a href="#" onclick="cerrarSesion()"><i class="fa fa-power-off" aria-hidden="true" title="Cerar Sesión"></i></a>
+                <a href="login.html"><i class="fa-solid fa-user" title="Usuario"></i></a>
+                <a href="carrito.html"><i class="fa-solid fa-cart-shopping" title="Carrito"><span>0</span></i></a>
+            </div>
+        </ul>
+    </nav>
+
+    <!-- JavaScript donde se captura la parte de arriba de la pagina: header-->
+    <script>
+        window.addEventListener("scroll", function(){
+            var header = document.querySelector("nav");
+            header.classList.toggle("abajo", window.scrollY>0);
+        })
+    </script>    
+
+    <!-- Zona central de la primer pagina -->
+    <section id="zona1">
+        <!-- Integrantes -->
+        <div class="caja">
+            <h1>Ecommerce SHOPEASE</h1>
+            <h2>Profesor: Carlos Arroyos Díaz</h2>
+            <ul class="lista-integrantes">
+                <li class="integrante">Diseñado por:</li>
+                <li class="integrante">Espinola José Luis</li>
+            </ul>
+        </div>
+
+        <!-- <div class="presentacio -->
+        <div class="contanier-nombres">
+            <div class="nombre1">
+                DISEÑADOR
+            </div>
+            <div class="nombre2">
+                JOSE LUIS
+            </div>
+        </div>
+
+        <section class="texto-zoom">
+            <p class="tracking">ShopEase</p>
+        </section>
+
+
+        <!-- Musica de fondo. Lo podría haber puesto en cualquier lugar. Lo puse SIN la opción de mostrar los controles -->
+        <audio id="background-music" src="/audio/musica-fondo.mp3" autoplay loop>
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+
+        <div class="btn-sino active" id="volume-btn"></div>
+    </section>
+
+    <!-- JavaScript para establecer el volumen inicial -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var audio = document.getElementById('background-music');
+            audio.volume = 0.5; // Establecí el volumen al 50%
+
+
+            var toggleButton = document.getElementById('volume-btn');
+            var isMuted = false;
+        
+            toggleButton.addEventListener('click', function () {
+                isMuted = !isMuted; // Cambiar el estado de mute
+                audio.volume = isMuted ? 0 : 0.5; // Silenciar o restaurar el volumen
+
+                // Cambiar el estado del botón
+                toggleButton.classList.toggle('active', !isMuted);
+            });
+        });
+    </script>    
+
+    <script src="https://kit.fontawesome.com/81581fb069.js"
+        crossorigin="anonymcus">
+    </script>
+    <script src="/js/contador-carrito.js"></script>   <!-- referencia solo a poner el numerito actualizado del carrito -->
+    <script src="/js/title.js"></script>
+    <script src="/js/cerrarsesion.js"></script>
+    <script src="/js/user-name.js"></script>
+</body>
+</html>

@@ -1,0 +1,629 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --cs-color01: #21d5fa;
+    --cs-color02: #17b5d4;
+    --cs-color03: #0d94af;
+    --cs-color04: #06748a;
+    --cs-color05: #015566;
+    --cs-color06: #01333d;
+
+    /* --cs-color-copy: #fcb4a0; */
+    --cs-color-copy: #17b5d4;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif, Arial, Helvetica;
+}
+
+/* html {
+    scroll-behavior: smooth;
+} */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    transition: 0.7s;
+    /* padding: 16px 10px; */
+    height: 90px;
+    width: 100%;
+    /* width: 100vw; */
+    z-index: 100;
+}
+
+nav.abajo {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 4px 10px;
+}
+
+.enlace {
+    position: absolute;
+    height: 70px;
+    padding: 6px;
+    margin: 8px 0 0 16px;
+  
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 60px;
+    width: 60px;
+    border-radius: 10px;
+    margin-right: 10px;
+
+    animation: rotate-logo 6s ease-in-out infinite;
+}
+
+@keyframes rotate-logo {
+    0% {
+        transform: rotateY(360deg);
+    }
+    60% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+.names {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-name {
+    color:#21d5fa;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    transition: 0.5s;
+}
+
+.main-name:hover {
+    text-shadow: 2px 2px #ffffff;
+    transition: 0.5s;
+}
+
+.main-namesito {
+    color: #ffffff;
+    font-size: 0.72rem;
+    text-shadow: 1px 1px 0 #21d5fa;
+} 
+
+/* Preparado para que se vea el nombre del usuario que esta logueado */
+.user-name {
+    color: #ff3c78;
+    text-shadow: 2px 2px 0px #ffffff;
+    padding: 6px;
+    margin-left: 10px;
+    font-size: 1rem;
+    align-items: center;
+    cursor: initial;
+    opacity: 0;
+} 
+
+nav ul {
+    float: right;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 70px;
+    margin: 6px;
+}
+
+nav ul li a {
+    position: relative;
+    color: #21d5fa;
+    text-shadow: 2px 2px 0px #5f5f5f;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    text-transform: uppercase;
+    padding: 0 12px;
+}
+
+.fa-home {
+    font-size: 1.125rem;
+    color: #0307fa;
+}
+
+/* nuevo */
+li a:after {
+    content: "";
+    position: absolute;
+    background-color: #ff3c78;
+    height: 4px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+
+li a:hover {
+    color: #ffffff;
+}
+
+li a:hover:after {
+    width: 100%;
+}
+
+.container-user {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    /* float: right; */
+    margin: 6px 20px;
+    padding: 6px;
+}
+
+.fa-power-off,
+.fa-user,
+.fa-cart-shopping {
+    font-size: 1.125rem;
+    color: #fff100;
+    cursor: pointer;
+}
+
+.container-user a {
+    position: relative;
+    /* color: inherit; */ /* Mantener el color por defecto */
+}
+
+.container-user a span {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    color: white; 
+    background-color: red;
+    padding: 3px 6px;
+    font-size: 10px;
+    border-radius: 50%;
+    font-weight: bold;
+    text-align: center;
+}
+
+.checkbtn {
+    font-size: 34px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+/* nav.abajo .main-name, */
+nav.abajo ul li a {
+    color: white;
+}
+
+nav.abajo .logo,
+nav.abajo ul li a:hover {
+    color: #21d5fa;
+}
+
+nav.abajo .main-name {
+    color: #ffffff;
+}
+
+nav.abajo .main-name:hover {
+    text-shadow: 2px 2px #21d5fa;
+}
+
+/**********************************************/
+/* **** Zona central de la primer pagina **** */ 
+#zona1 {
+    background: url(../img/ecommerce-cleanup.jpg) no-repeat;   /* Es para que sea SOLO una imagen */
+    background-size: cover;
+    background-position: center center;
+    /* height: calc(100vh - 100px); */
+
+    /* nuevo */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+
+    /* border: 2px solid red; */
+}
+
+#container-lista {
+    position: absolute;
+    top: 10%;
+
+    width: 60%;
+    height: 88%;
+    
+    margin: 10px;
+    padding-bottom: 16px;
+    overflow: hidden;
+
+    /* border: 2px solid red; */
+}
+
+#container-lista h2 {
+    text-align: center;
+    color: #ff4081;
+    font-size: clamp(1.4rem, 2vw + 1rem, 2rem);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #ffffff;
+}
+
+.table-wrapper {
+    max-height: 92%; /* Ajusta esta altura según sea necesario */
+    min-height: 260px;
+    overflow-y: auto;
+    overflow-x: none;
+
+    /* scrollbar-width: none; */   /* Oculta la barra en Firefox */
+
+    /* border: 1px solid rgb(108, 30, 210); */
+}
+
+/* Define el tamaño de la barra de desplazamiento */
+.table-wrapper::-webkit-scrollbar {
+    /* display: none; */   /* Oculta la barra en Chrome, Edge y Safari */
+    width: 0.5rem;   /* para barras de desplazamiento verticales */
+}
+
+/* Define el color y estilo de la "cachilla" o thumb */
+.table-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--cs-color03);
+    /* border-radius: 5px; */
+}
+
+/* Define el color del fondo de la pista de la barra */
+.table-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* border-radius: 5px; */
+}
+
+.style-table {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border-collapse: collapse;
+    /* border: 1px solid #35fd04; */
+}
+
+.style-table thead {
+    position: sticky;
+    top: 0;
+    background-color: var(--cs-color03);
+    color: #ffffff;
+    font-size: clamp(0.625rem, 0.1563rem + 1.5vw, 1rem);
+    text-align: left;
+    z-index: 1; /* Asegura que esté por encima del contenido desplazable */
+
+    /* border: 1px solid #21d5fa; */
+}
+
+.style-table th,
+.style-table td {
+    padding: 6px;
+    cursor: default;
+}
+
+/* renglones */
+.style-table tbody tr {
+    /* position: relative;
+    top: -14px; */
+    border-bottom: 1px solid #dddddd;
+    font-size: clamp(0.625rem, 0.1563rem + 1.5vw, 1rem);
+}
+
+.style-table td:nth-child(3) {
+    /* opacity: 0.2; */
+    text-shadow: 0 0 6px #000000;
+    /* filter: blur(2px); */
+    color: transparent;
+    user-select: none;   /* evita que se seleccione con el mouse, y no se vea lo que hay detras del difuminado */
+}
+
+/* renglones IMPAR */
+.style-table tbody tr:nth-of-type(odd) {
+    background-color: #c7c5c5;
+}
+
+/* renglones PAR */
+.style-table tbody tr:nth-of-type(even) {
+    background-color: #d6d5d5;
+}
+
+.style-table tbody tr:hover {
+    color: #ffffff;
+    background-color: #8ba3aa;
+    cursor: pointer;
+}
+
+
+/* botones modificar y eliminar */
+.style-table td:last-child {
+    text-align: left;
+}
+
+.style-table td:last-child button {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* columna acciones */
+.style-table td:nth-last-child(1) {
+    width: 180px;
+}
+
+/* boton modificar */
+.style-table td .modificar {
+    margin-right: 5px;
+    background-color: #919a9c;
+}
+
+.style-table td .modificar:hover {
+    color: #ffffff;
+    background-color: #b2bec0;
+}
+
+/* boton eliminar */
+.style-table td .eliminar {
+    color: #ffffff;
+    background-color: #bb0202;
+}
+
+.style-table td .eliminar:hover {
+    background-color: #e40303;
+}
+
+
+/*************************/
+/* ******* Footer ****** */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+}
+
+p.contac {
+    font-size: 1.5rem;
+    background-color: #333;
+    padding-bottom: 10px;
+    text-shadow: #2fcdcd 2px 2px;
+}
+
+footer .container {
+    margin-bottom: 8px;
+}
+
+.mimail {
+    font-size: 1rem;
+    padding-bottom: 12px;
+}
+
+.mimail a {
+    color: #ffffff;
+}
+
+.sociales {
+    padding-bottom: 10px;
+}
+
+.sociales a {
+    padding: 0 4px;
+}
+
+.linkedin, .github, .facebook, .whatsapp {
+    width: 36px;
+    height: 36px;
+    border-radius: 50px;
+
+    transition: 0.5s;
+}
+
+.linkedin:hover, .github:hover,
+.facebook:hover, .whatsapp:hover {
+    /* background-color: #ffffff; */
+    box-shadow: 1px 1px 14px 0 #abacaf, -1px -1px 14px 0 #abacaf;
+}
+
+a.terminos {
+    color: #ffe4c4;
+    font-size: clamp(0.625rem, 1vw + 0.25rem, 1rem);
+}
+
+footer .copyright {
+    font-size: 1rem;
+    font-stretch: ultra-expanded;
+    color: var(--cs-color-copy);
+}
+
+
+/*************************************/
+/* ***** Media Query con 1368px ***** */
+@media (max-width: 1368px) {
+    .logo {
+        height: 50px;
+        width: 50px;
+    }
+    
+    .main-name {
+        font-size: 1.3rem;
+    } 
+
+    .checkbtn {
+        display: block;
+        margin-top: 8px;
+    }
+
+    nav ul {
+        position: fixed;
+        width: 100%;
+        height: 80vh;
+        background: rgba(44, 62, 80, 0.9);
+        top: 90px;
+        left: -100%;
+        margin: 0;
+        text-align: center;
+        transition: all .5s;
+        overflow-y: auto;
+
+        display: block;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 14px 0;
+        line-height: 50px;
+    }
+
+    nav ul li a {
+        font-size: 20px;
+    }
+
+    li a:hover, li a.active {
+        background: none;
+        color: red;
+    }
+
+    #check:checked ~ ul {
+        left:0;
+    }
+
+    .presentacion h1 {
+        font-size: 4rem;
+    }
+}
+
+
+/*************************************/
+/* ***** Media Query con 1090px ***** */
+@media (max-width: 1090px) {
+    .main-name {
+        font-size: 1.4rem;
+    } 
+}
+
+
+/*************************************/
+/* ***** Media Query con 952px ***** */
+@media (max-width: 952px) {
+
+}
+
+
+/*************************************/
+/* ***** Media Query con 896px ***** */
+/*************************************/
+@media (max-width: 896px) {
+    #container-lista {
+        width: 90%;
+        height: 88%;
+    }
+    
+    .table-wrapper {
+        max-height: 86%;
+    }
+    
+    .style-table th,
+    .style-table td {
+        padding: 2px;
+    }
+    
+    /* botones modificar y eliminar */
+    .style-table td:last-child {
+        text-align: left;
+    }
+    
+    .style-table td:last-child button {
+        padding: 2px 6px;
+        font-size: 10px;
+    }
+    
+    /* columna acciones */
+    .style-table td:nth-last-child(1) {
+        width: 140px;
+    }
+}
+
+
+
+/*************************************/
+/* ***** Media Query con 858px ***** */
+/*************************************/
+@media (max-width: 858px) {
+    .presentacion h1 {
+        font-size: 4rem;
+    }
+}
+
+
+
+/*************************************/
+/* ***** Media Query con 542px ***** */
+/*************************************/
+@media (max-width: 542px) {
+    .presentacion h1 {
+        font-size: 3rem;
+    }
+}
+
+
+
+/*************************************/
+/* ***** Media Query con 490px ***** */
+/*************************************/
+@media (max-width: 490px) {
+    .fa-bars {
+        scale: 0.9;
+    }
+
+    .main-name {
+        font-size: 1.1rem;
+    }
+
+    /* ************************** */
+    footer {
+        padding: 30px 0;
+    }
+    
+    p.contac {
+        font-size: 1.6rem;
+    }
+    
+    p.mimail {
+        font-size: 0.9rem;
+    }
+    
+    footer .copyright {
+        font-size: 0.74rem;
+        font-stretch: normal;
+    }
+}
+
+
+/*************************************/
+/* ***** Media Query con 430px ***** */
+/*************************************/
+@media (max-width: 430px) {
+    .logo {
+        height: 40px;
+        width: 40px;
+    }
+}

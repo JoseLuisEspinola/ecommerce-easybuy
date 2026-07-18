@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="Imagen/jpg" href="/img/logo3.jpg">
+    <link rel="stylesheet" href="/css/carrito.css">
+    <title>ShopEase</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Barra de navegacion o NavBar -->
+    <nav class="navbar">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <a href="disenador.html" class="enlace">
+            <img src="./img/logo3.jpg" class="logo" alt="Imagen Logo">
+            <div class="names">
+                <span class="main-name">ShopEase</span>
+                <span class="main-namesito">La tienda, a tu manera</span>
+            </div>
+            <p class="user-name"></p>
+        </a>
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-home" title="Inicio"></i></a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="ofertas.html">Ofertas</a></li>
+            <li><a href="spinner.html">Galeria</a></li>
+            <li><a href="resenas.html">Reseñas</a></li>
+            <li><a href="index.html#section-form">Contacto</a></li>
+            <li><a href="usuarios.html">Usuarios</a></li>
+
+            <div class="container-user">
+                <a href="#" onclick="cerrarSesion()"><i class="fa fa-power-off" aria-hidden="true" title="Cerar Sesión"></i></a>
+                <a href="login.html"><i class="fa-solid fa-user" title="Usuario"></i></a>
+                <a href="#"><i class="fa-solid fa-cart-shopping" title="Carrito"><span>0</span></i></a>
+            </div>
+        </ul>
+    </nav>
+
+    <!-- JavaScript donde se captura la parte de arriba de la pagina: header-->
+    <script>
+        window.addEventListener("scroll", function(){
+            var header = document.querySelector("nav");
+            header.classList.toggle("abajo", window.scrollY>0);
+        })
+    </script>
+
+    <!-- Zona central de la primer pagina -->
+    <section id="zona1">
+        <div class="container-carrito">
+            <h3 class="revisa">Revisar orden</h3>
+            <h2 class="vista">Vista previa de la orden</h2>
+            <div id="carrito"></div>
+            
+        </div>
+    </section>
+
+
+    <!-- ********* Seccion de footer ******** -->
+    <footer id="piedepagina">
+        <p class="contac">Contacto</p>
+        <div class="container">
+            <p class="mimail">
+                <a href="mailto:jle36@hotmail.com?subject=Consulta&body=Hola%2C%20quisiera%20más%20información%20sobre%20...">jle36@hotmail.com</a>
+                - Cel. +54-3487-616158
+            </p>
+            <div class="sociales">
+                <a href="https://www.linkedin.com/in/jose-luis-espinola-a036b7125/" target="_blank" title="Ir a LinkedIn">
+                    <img class="linkedin" src="./img/Linkedin.png" alt="Linkedin">
+                </a>
+                <a href="https://github.com/JoseLuisEspinola" target="_blank" title="Ir a GitHub">
+                    <img class="github" src="./img/github1.png" alt="Github">
+                </a>
+                <a href="https://www.facebook.com/joseluis.espinola1" target="_blank" title="Ir a Facebook">
+                    <img class="facebook" src="./img/facebook.png" alt="Facebook">
+                </a>
+                <!-- <a href="https://www.instagram.com/jle36/" target="_blank" title="Ir a Instagram">
+                    <img class="instagram" src="./img/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://x.com/jle36" target="_blank" title="Ir a Twitter">
+                    <img class="twitter" src="./img/Twitter.png" alt="Twitter">
+                </a> -->
+                <a href="https://api.whatsapp.com/send?phone=+543487616158&text=Hola%2C%20me%20gustaría%20realizar%20una%20página%20web...%20podrías%20contarme?" target="_blank" title="Ir a Whatsapp">
+                    <img class="whatsapp" src="./img/Whatsapp.png" alt="Whatsapp">
+                </a>
+            </div>
+            <a class="terminos" href="terminos.html">Términos y condiciones</a>
+        </div>
+
+        <!-- ******** Copyright ******** -->
+        <p class="copyright">&copy; <span id="copyright-year"></span> Control de Stock - Todos los derechos reservados - Espinola José Luis</p>
+        <script>
+            const currentYear = new Date().getFullYear();
+            document.getElementById('copyright-year').textContent = currentYear;
+        </script>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/81581fb069.js"
+        crossorigin="anonymcus">
+    </script>
+    <script src="/js/carrito.js"></script>
+    <script src="/js/contador-carrito.js"></script>   <!-- referencia solo a poner el numerito actualizado del carrito -->
+    <script src="/js/title.js"></script>
+    <script src="/js/cerrarsesion.js"></script>
+    <script src="/js/user-name.js"></script>
+</body>
+</html>
