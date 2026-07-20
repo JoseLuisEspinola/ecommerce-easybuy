@@ -47,4 +47,7 @@ function validarFormulario(event) {
 }
 
 // Event listener al formulario "escuchar" el evento submit del boton
-document.getElementById("form-contacto").addEventListener("submit", validarFormulario);
+const formContacto = document.getElementById("form-contacto");
+if (formContacto) {
+    formContacto.addEventListener("submit", validarFormulario);
+}

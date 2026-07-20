@@ -1,27 +1,31 @@
-//Array para almacenar a los usuarios (inicializado desde localStorage)
-let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-// let usuarios = JSON.parse(sessionStorage.getItem('usuarios')) || [];
+const API_BASE = "https://node-js-final-2026.vercel.app";
 
-// Función para validar el formulario
-function validarFormulario(event) {
-    
-    // alert("Entro a la funcion");
-    event.preventDefault(); // Evitar el envío del formulario
+// Array para almacenar a los usuarios (como fallback / compatibilidad local)
+let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+// Función para validar y enviar el formulario
+async function validarFormulario(event) {
+    event.preventDefault(); // Evitar el envío clásico del formulario
 
     // Validar los campos: capturo el valor de los campos
-    var nombre = document.getElementById("nombre").value;
-    var usuario = document.getElementById("username").value;
+    var nombre = document.getElementById("nombre").value.trim();
+    var usuario = document.getElementById("username").value.trim();
+    var email = document.getElementById("email").value.trim();
     var clave = document.getElementById("password").value;
     var clave2 = document.getElementById("password2").value;
 
     var errores = []; 
 
-    if (nombre.trim() === "") {
+    if (nombre === "") {
         errores.push("Por favor, ingrese su Nombre.");
     }
 
-    if (usuario.trim() === "") {
+    if (usuario === "") {
         errores.push("Por favor, ingrese su Nombre de Usuario.");
+    }
+
+    if (email === "") {
+        errores.push("Por favor, ingrese su Email.");
     }
 
     if (clave.trim() === "") {
@@ -29,39 +33,53 @@ function validarFormulario(event) {
     }
 
     if (clave2.trim() === "") {
-        errores.push("Por favor, repita la contaseña.");
+        errores.push("Por favor, repita la contraseña.");
     }
     
     // comparo los valores que tienen las claves
     if (clave !== clave2) {
-        errores.push("Las contraseñas DEBEN ser IDENTICAS.")
-    }
-
-    // Nueva validación: verificar que el nombre de usuario sea único
-    if (usuarios.some(u => u.usuario === usuario)) {
-        errores.push("El nombre de usuario ya está en uso.");
+        errores.push("Las contraseñas DEBEN ser IDENTICAS.");
     }
 
     // Mostrar mensajes de error si la longitud es mayor a cero
     if (errores.length > 0) {
         alert(errores.join("\n"));
-        return; // Detener el envío del formulario si hay errores, osea que se retorna
+        return; // Detener el envío
     }
 
-    if (errores.length === 0) {
-        const nuevoUsuario = {nombre:nombre, usuario:usuario, clave:clave};
-        usuarios.push(nuevoUsuario);
+    try {
+        const response = await fetch(`${API_BASE}/auth/register`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: nombre,
+                email: email,
+                password: clave,
+                rol: "cliente" // Por defecto todos se registran con rol de cliente
+            })
+        });
 
-        // Actualizar localStorage
-        localStorage.setItem('usuarios', JSON.stringify(usuarios));  // local mantiene el array en memoria del navegador
-        //sessionStorage.setItem('usuarios', JSON.stringify(usuarios));   // session solo mantiene el array hasta que se cierra el navegador
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.message || `Error en el registro (${response.status})`);
+        }
 
-        alert(`Usuario registrado con éxito: ${nuevoUsuario.usuario}`);
+        const nuevoUsuarioDb = await response.json();
+
+        // Guardar también en localStorage para compatibilidad local con listados
+        const nuevoUsuarioLocal = { nombre: nombre, usuario: usuario, email: email, clave: clave };
+        usuarios.push(nuevoUsuarioLocal);
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+        alert(`Usuario registrado con éxito: ${usuario}`);
 
         // Redirige al formulario login
         window.location.href = "login.html";
+    } catch (error) {
+        alert("No se pudo registrar el usuario: " + error.message);
     }
-    
 }
 
 // Event listener al formulario "escuchar" el evento submit del boton

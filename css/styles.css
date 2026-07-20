@@ -259,7 +259,7 @@ nav.abajo .main-name:hover {
 /**********************************************/
 /* **** Zona central de la primer pagina **** */ 
 #zona1{
-    background: url(../img/fondoEasyBuy.webp) no-repeat;
+    background: url(../img/portada7.jpg) no-repeat;
     background-size: cover;
     background-position: center center;
     /* height: calc(100vh - 100px); */

@@ -31,7 +31,8 @@ function validarFormulario(event) {
             usuario: user.id,
             rol: user.rol,
             email: user.email,
-            name: user.name || user.nombre // Ajuste para compatibilidad con el backend
+            name: user.name || user.nombre, // Ajuste para compatibilidad con el backend
+            loginAt: Date.now()
         }));
 
         alert(`¡Bienvenido ${user.name}! Inicio de sesión exitoso.`);
