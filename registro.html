@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="Imagen/jpg" href="/img/logo3.jpg">
+    <link rel="shortcut icon" type="Imagen/jpg" href="/img/EasyBuy-logo.svg">
     <link rel="stylesheet" href="/css/registro.css">
     <title>ShopEase</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="/js/scrollreveal.js"></script>   <!-- libreria para animaciones -->
 </head>
 
 <body>
@@ -18,21 +19,31 @@
             <i class="fas fa-bars"></i>
         </label>
         <a href="disenador.html" class="enlace">
-            <img src="./img/logo3.jpg" class="logo" alt="Imagen Logo">
+            <img src="./img/EasyBuy-logo.svg" class="logo" alt="Imagen Logo">
             <div class="names">
-                <span class="main-name">ShopEase</span>
+                <span class="main-name">EasyBuy</span>
                 <span class="main-namesito">La tienda, a tu manera</span>
             </div>
             <p class="user-name"></p>
         </a>
+
         <ul>
             <li><a href="index.html"><i class="fa-solid fa-home" title="Inicio"></i></a></li>
+            <li><a href="index.html#section-nosotros"></a></li>
             <li><a href="productos.html">Productos</a></li>
             <li><a href="ofertas.html">Ofertas</a></li>
-            <li><a href="spinner.html">Galeria</a></li>
             <li><a href="resenas.html">Reseñas</a></li>
             <li><a href="index.html#section-form">Contacto</a></li>
-            <li><a href="usuarios.html">Usuarios</a></li>
+            <!-- Menú Datos (solo admin activo, usuarios comunes deshabilitado) -->
+            <li class="dropdown nav-disabled" id="menu-datos">
+                <a href="#">Datos </a>
+                <ul class="dropdown-content">
+                    <li><a href="admin-productos.html">Productos</a></li>
+                    <li><a href="admin-usuarios.html">Usuarios</a></li>
+                    <li><a href="admin-carrito.html">Carrito</a></li>
+                    <li><a href="admin-resenas.html">Reseñas</a></li>
+                </ul>
+            </li>
 
             <div class="container-user">
                 <a href="#" onclick="cerrarSesion()"><i class="fa fa-power-off" aria-hidden="true" title="Cerar Sesión"></i></a>
