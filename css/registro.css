@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
     --cs-color01: #21d5fa;
     --cs-color02: #17b5d4;
@@ -66,9 +67,11 @@ nav.abajo {
     0% {
         transform: rotateY(360deg);
     }
+
     60% {
         transform: rotateY(0deg);
     }
+
     100% {
         transform: rotateY(0deg);
     }
@@ -108,7 +111,7 @@ nav.abajo {
     align-items: center;
     cursor: initial;
     opacity: 0;
-} 
+}
 
 nav ul {
     float: right;
@@ -192,13 +195,14 @@ li a:hover:after {
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
 }
 
 
 
 
 .fa-power-off,
+.fa-address-card,
 .fa-user,
 .fa-cart-shopping {
     font-size: 1.125rem;
@@ -207,20 +211,29 @@ li a:hover:after {
 }
 
 .container-user a {
-    position: relative; /* Hacer el contenedor relativo para posicionar el span */
-    /* color: inherit; */ /* Mantener el color por defecto */
+    position: relative;
+    /* Hacer el contenedor relativo para posicionar el span */
+    /* color: inherit; */
+    /* Mantener el color por defecto */
 }
 
 .container-user a span {
-    position: absolute; /* Posicionar relativo al ícono */
-    top: -8px; /* Ajusta según el tamaño del ícono */
-    right: -12px; /* Ajusta según la distancia del borde */
-    color: var(--cs-color07); 
+    position: absolute;
+    /* Posicionar relativo al ícono */
+    top: -8px;
+    /* Ajusta según el tamaño del ícono */
+    right: -12px;
+    /* Ajusta según la distancia del borde */
+    color: var(--cs-color07);
     background-color: red;
-    padding: 3px 6px; /* Tamaño del círculo */
-    font-size: 10px; /* Tamaño del texto */
-    border-radius: 50%; /* Convertirlo en un círculo */
-    font-weight: bold; /* Hacer que el texto resalte */
+    padding: 3px 6px;
+    /* Tamaño del círculo */
+    font-size: 10px;
+    /* Tamaño del texto */
+    border-radius: 50%;
+    /* Convertirlo en un círculo */
+    font-weight: bold;
+    /* Hacer que el texto resalte */
     text-align: center;
 }
 
@@ -257,9 +270,10 @@ nav.abajo .main-name:hover {
 }
 
 /**********************************************/
-/* **** Zona central de la primer pagina **** */ 
-#zona1{
-    background: url(../img/ecommerce-cleanup.jpg) no-repeat;   /* Es para que sea SOLO una imagen */
+/* **** Zona central de la primer pagina **** */
+#zona1 {
+    background: url(../img/ecommerce-cleanup.jpg) no-repeat;
+    /* Es para que sea SOLO una imagen */
     background-size: cover;
     background-position: center center;
     /* height: calc(100vh - 100px); */
@@ -268,7 +282,8 @@ nav.abajo .main-name:hover {
     width: 100%;
     height: 100vh;
     display: flex;
-    flex-direction: column;   /* lo puse, porque necesitaba el boton debajo */
+    flex-direction: column;
+    /* lo puse, porque necesitaba el boton debajo */
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
@@ -277,20 +292,21 @@ nav.abajo .main-name:hover {
 /* **************************** */
 form {
     /* background-color:rgba(247, 228, 250, 0.8); */
-    background-color:rgba(247, 228, 250, 0.8);
-    padding: 40px 0;
+    background-color: rgba(247, 228, 250, 0.8);
+    padding: 20px 0;
     box-shadow: 0 0 6px rgba(131, 130, 130, 0.8);
     border-radius: 10px;
 }
 
 .form h1 {
+    font-size: clamp(1.6rem, 2vw + 0.5rem, 2rem);
     text-align: center;
     font-weight: 700;
     color: #020492;
 }
 
 .form .ver-user {
-    margin-top: 10px;
+    margin-top: 6px;
     display: flex;
     justify-content: center;
 }
@@ -310,18 +326,19 @@ form {
 
 form .grupo {
     position: relative;
-    margin: 45px;
+    margin: 20px 30px;
 }
 
 input {
     background: none;
     color: #c6c6c6;
-    font-size: 18px;
-    padding: 10px 10px 10px 5px;
+    font-size: 16px;
+    padding: 6px 6px 6px 4px;
     display: block;
     width: 100%;
     border: none;
-    color: #858183;;
+    color: #858183;
+    ;
     border-bottom: 1px solid #49454567;
 }
 
@@ -336,7 +353,7 @@ input:focus {
 
 label.rotulo {
     color: #49454567;
-    
+
     font-size: 16px;
     position: absolute;
     left: 5px;
@@ -364,35 +381,36 @@ input:valid~label.rotulo {
     width: 0%;
     bottom: 0;
     position: absolute;
-    background: linear-gradient(to right, #b06ab3, #4568dc);
+    background: linear-gradient(to right, var(--cs-color11), var(--cs-color10));
     transition: 0.3s ease width;
     left: 0;
 }
 
 input:focus~.barra::before {
     width: 100%;
-}   
+}
 
 button {
     font-family: "Roboto";
-    background: linear-gradient(to right, #17b5d4, #06748a, #0d94af, #015566);
+    background: linear-gradient(to right, var(--cs-color04), var(--cs-color01),
+            var(--cs-color04));
     border: none;
     display: block;
 
     width: 80%;
     margin: 10px auto;
-    color:rgba(44, 62, 80, 0.9);
+    color: rgba(44, 62, 80, 0.9);
     height: 40px;
     font-size: 16px;
-    
+
     font-weight: bold;
     border-radius: 5px;
     transition: 0.5s;
 }
 
 button:hover {
-    color: #ffffff;
-    background: linear-gradient(to right, #015566, #0d94af, #06748a, #17b5d4);
+    color: var(--cs-color07);
+    background: linear-gradient(to right, var(--cs-color01), var(--cs-color04), var(--cs-color01));
 }
 
 /* ************ */
@@ -448,7 +466,10 @@ footer .container {
     padding: 0 4px;
 }
 
-.linkedin, .github, .facebook, .whatsapp {
+.linkedin,
+.github,
+.facebook,
+.whatsapp {
     width: 36px;
     height: 36px;
     border-radius: 50px;
@@ -456,8 +477,10 @@ footer .container {
     transition: 0.5s;
 }
 
-.linkedin:hover, .github:hover,
-.facebook:hover, .whatsapp:hover {
+.linkedin:hover,
+.github:hover,
+.facebook:hover,
+.whatsapp:hover {
     /* background-color: #ffffff; */
     box-shadow: 1px 1px 14px 0 #abacaf, -1px -1px 14px 0 #abacaf;
 }
@@ -481,10 +504,10 @@ footer .copyright {
         height: 50px;
         width: 50px;
     }
-    
+
     .main-name {
         font-size: 1.3rem;
-    } 
+    }
 
     .checkbtn {
         display: block;
@@ -503,7 +526,8 @@ footer .copyright {
         transition: all .5s;
         overflow-y: auto;
 
-        display: block; /* agregue */
+        display: block;
+        /* agregue */
     }
 
     nav ul li {
@@ -516,13 +540,14 @@ footer .copyright {
         font-size: 20px;
     }
 
-    li a:hover, li a.active {
+    li a:hover,
+    li a.active {
         background: none;
         color: red;
     }
 
-    #check:checked ~ ul {
-        left:0;
+    #check:checked~ul {
+        left: 0;
     }
 }
 
@@ -530,14 +555,14 @@ footer .copyright {
 /*************************************/
 /* ***** Media Query con 1090px ***** */
 @media (max-width: 1090px) {
-   /*  nav ul li a {
+    /*  nav ul li a {
         font-size: 1rem;
         padding: 0 8px;
     } */
 
     .main-name {
         font-size: 1.4rem;
-    } 
+    }
 
     .sucursales-maps {
         width: 90%;
@@ -572,15 +597,15 @@ footer .copyright {
     footer {
         padding: 30px 0;
     }
-    
+
     p.contac {
         font-size: 1.6rem;
     }
-    
+
     p.mimail {
         font-size: 0.9rem;
     }
-    
+
     footer .copyright {
         font-size: 0.74rem;
         font-stretch: normal;

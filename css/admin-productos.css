@@ -202,6 +202,7 @@ li a:hover:after {
 
 
 .fa-power-off,
+.fa-address-card,
 .fa-user,
 .fa-cart-shopping {
     font-size: 1.125rem;
@@ -341,10 +342,12 @@ nav.abajo .main-name:hover {
 }
 
 #form-container {
-    display: block;
+    /* display: block; */
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
+
+    display: none;
 }
 
 #form-producto {

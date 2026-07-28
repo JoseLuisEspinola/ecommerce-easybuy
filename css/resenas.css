@@ -202,6 +202,7 @@ li a:hover:after {
 
 
 .fa-power-off,
+.fa-address-card,
 .fa-user,
 .fa-cart-shopping {
     font-size: 1.125rem;
@@ -306,7 +307,7 @@ nav.abajo .main-name:hover {
 
 #container-resenas h2 {
     color: #ff4081;
-    font-size: clamp(1.4rem, 2vw + 1rem, 2rem);
+    font-size: clamp(1.6rem, 2vw + 0.5rem, 2rem);
     margin-bottom: 6px;
     text-shadow: 2px 2px #ffffff;
 }

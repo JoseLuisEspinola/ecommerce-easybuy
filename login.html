@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,7 @@
     <link rel="stylesheet" href="/css/login.css">
     <title>EasyBuy</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="/js/scrollreveal.js"></script>   <!-- libreria para animaciones -->
+    <script src="/js/scrollreveal.js"></script> <!-- libreria para animaciones -->
 </head>
 
 <body>
@@ -46,8 +47,10 @@
             </li>
 
             <div class="container-user">
-                <a href="#" onclick="cerrarSesion()"><i class="fa fa-power-off" aria-hidden="true" title="Cerar Sesión"></i></a>
-                <a href="#"><i class="fa-solid fa-user" title="Usuario"></i></a>
+                <a href="#" onclick="cerrarSesion()"><i class="fa fa-power-off" aria-hidden="true"
+                        title="Cerar Sesión"></i></a>
+                <a href="registro.html"><i class="fa-solid fa-address-card" title="Registro Usuario"></i></a>
+                <a href="#"><i class="fa-solid fa-user" title="Ingreso Usuario"></i></a>
                 <a href="carrito.html"><i class="fa-solid fa-cart-shopping" title="Carrito"><span>0</span></i></a>
             </div>
         </ul>
@@ -55,11 +58,11 @@
 
     <!-- JavaScript donde se captura la parte de arriba de la pagina: header-->
     <script>
-        window.addEventListener("scroll", function(){
+        window.addEventListener("scroll", function () {
             var header = document.querySelector("nav");
-            header.classList.toggle("abajo", window.scrollY>0);
+            header.classList.toggle("abajo", window.scrollY > 0);
         })
-    </script>    
+    </script>
 
     <!-- Zona central de la primer pagina con el formulario -->
     <section id="zona1">
@@ -74,31 +77,33 @@
                     <input type="email" name="email" id="email" required><span class="barra"></span>
                     <label for="email" class="rotulo">Email</label>
                 </div>
-                
+
                 <div class="grupo">
                     <input type="password" name="password" id="password" required><span class="barra"></span>
                     <label for="password" class="rotulo">Password</label>
                 </div>
 
                 <button type="submit">Aceptar</button>
-                
+
                 <div class="registrate">
                     <p>Regístrate <a href="registro.html">Aqui</a></p>
                 </div>
             </div>
         </form>
     </section>
-    
+
     <!-- ********* Seccion de footer ******** -->
     <footer id="piedepagina">
         <p class="contac">Contacto</p>
         <div class="container">
             <p class="mimail">
-                <a href="mailto:jle36@hotmail.com?subject=Consulta&body=Hola%2C%20quisiera%20más%20información%20sobre%20...">jle36@hotmail.com</a>
+                <a
+                    href="mailto:jle36@hotmail.com?subject=Consulta&body=Hola%2C%20quisiera%20más%20información%20sobre%20...">jle36@hotmail.com</a>
                 - Cel. +54-3487-616158
             </p>
             <div class="sociales">
-                <a href="https://www.linkedin.com/in/jose-luis-espinola-a036b7125/" target="_blank" title="Ir a LinkedIn">
+                <a href="https://www.linkedin.com/in/jose-luis-espinola-a036b7125/" target="_blank"
+                    title="Ir a LinkedIn">
                     <img class="linkedin" src="./img/Linkedin.png" alt="Linkedin">
                 </a>
                 <a href="https://github.com/JoseLuisEspinola" target="_blank" title="Ir a GitHub">
@@ -113,7 +118,8 @@
                 <a href="https://x.com/jle36" target="_blank" title="Ir a Twitter">
                     <img class="twitter" src="./img/Twitter.png" alt="Twitter">
                 </a> -->
-                <a href="https://api.whatsapp.com/send?phone=+543487616158&text=Hola%2C%20me%20gustaría%20realizar%20una%20página%20web...%20podrías%20contarme?" target="_blank" title="Ir a Whatsapp">
+                <a href="https://api.whatsapp.com/send?phone=+543487616158&text=Hola%2C%20me%20gustaría%20realizar%20una%20página%20web...%20podrías%20contarme?"
+                    target="_blank" title="Ir a Whatsapp">
                     <img class="whatsapp" src="./img/Whatsapp.png" alt="Whatsapp">
                 </a>
             </div>
@@ -121,21 +127,22 @@
         </div>
 
         <!-- ******** Copyright ******** -->
-        <p class="copyright">&copy; <span id="copyright-year"></span> Control de Stock - Todos los derechos reservados - Espinola José Luis</p>
+        <p class="copyright">&copy; <span id="copyright-year"></span> Control de Stock - Todos los derechos reservados -
+            Espinola José Luis</p>
         <script>
             const currentYear = new Date().getFullYear();
             document.getElementById('copyright-year').textContent = currentYear;
         </script>
     </footer>
-    
-    <script src="https://kit.fontawesome.com/81581fb069.js"
-        crossorigin="anonymcus">
+
+    <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymcus">
     </script>
-    
-    <script src="/js/contador-carrito.js"></script>   <!-- referencia solo a poner el numerito actualizado del carrito -->
+
+    <script src="/js/contador-carrito.js"></script> <!-- referencia solo a poner el numerito actualizado del carrito -->
     <script src="/js/login.js"></script>
     <script src="/js/title.js"></script>
     <script src="/js/cerrarsesion.js"></script>
     <script src="/js/user-name.js"></script>
 </body>
+
 </html>

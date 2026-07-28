@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,7 @@
     <link rel="stylesheet" href="/css/styles.css">
     <title>EasyBuy</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="/js/scrollreveal.js"></script>   <!-- libreria para animaciones -->
+    <script src="/js/scrollreveal.js"></script> <!-- libreria para animaciones -->
 </head>
 
 <body>
@@ -26,7 +27,7 @@
             </div>
             <p class="user-name"></p>
         </a>
-        
+
         <ul>
             <li><a href="index.html"><i class="fa-solid fa-home" title="Inicio"></i></a></li>
             <li><a href="#section-nosotros">Nosotros</a></li>
@@ -44,10 +45,12 @@
                     <li><a href="admin-resenas.html">Reseñas</a></li>
                 </ul>
             </li>
-            
+
             <div class="container-user">
-                <a href="#" onclick="cerrarSesion()"><i class="fa fa-power-off" aria-hidden="true" title="Cerar Sesión"></i></a>
-                <a href="login.html"><i class="fa-solid fa-user" title="Login"></i></a>
+                <a href="#" onclick="cerrarSesion()"><i class="fa fa-power-off" aria-hidden="true"
+                        title="Cerar Sesión"></i></a>
+                <a href="registro.html"><i class="fa-solid fa-address-card" title="Registro Usuario"></i></a>
+                <a href="login.html"><i class="fa-solid fa-user" title="Ingreso Usuario"></i></a>
                 <a href="carrito.html"><i class="fa-solid fa-cart-shopping" title="Carrito"><span>0</span></i></a>
             </div>
         </ul>
@@ -55,24 +58,24 @@
 
     <!-- JavaScript donde se captura la parte de arriba de la pagina: header-->
     <script>
-        window.addEventListener("scroll", function(){
+        window.addEventListener("scroll", function () {
             var header = document.querySelector("nav");
-            header.classList.toggle("abajo", window.scrollY>0);
+            header.classList.toggle("abajo", window.scrollY > 0);
         })
-    </script>    
+    </script>
 
     <!-- Zona central de la primer pagina -->
     <section id="zona1">
         <div class="presentacion">
             <h1>Easy Buy</h1>
-            <p class="renglon1">"Con <span>EasyBuy</span>, las compras en línea nunca habían sido 
-                tan sencillas. Nuestro objetivo es brindarte una experiencia ágil y 
-                personalizada, desde la selección de productos hasta el pago. Encuentra 
-                lo que buscas rápidamente y haz de tus compras algo placentero, práctico 
+            <p class="renglon1">"Con <span>EasyBuy</span>, las compras en línea nunca habían sido
+                tan sencillas. Nuestro objetivo es brindarte una experiencia ágil y
+                personalizada, desde la selección de productos hasta el pago. Encuentra
+                lo que buscas rápidamente y haz de tus compras algo placentero, práctico
                 y completamente adaptado a tus necesidades."
             </p>
         </div>
-        
+
         <div class="resenas">
             <a class="btn-resenas" href="resenas.html">Ver Reseñas</a>
         </div>
@@ -87,44 +90,45 @@
         <div class="container-nosotros">
             <div class="container-group">
                 <p class="descripcion">
-                    En <span>Easy Buy</span> nos dedicamos a ofrecer compras rápidas y seguras. 
+                    En <span>Easy Buy</span> nos dedicamos a ofrecer compras rápidas y seguras.
                     Nuestro compromiso es acompañarte en cada elección con confianza, claridad y cercanía.
                 </p>
             </div>
 
             <div class="container-group">
                 <p class="descripcion">
-                    Cada producto es una oportunidad para brindarte comodidad y satisfacción. 
+                    Cada producto es una oportunidad para brindarte comodidad y satisfacción.
                     Nos enfocamos en que tu experiencia sea práctica, transparente y adaptada a lo que buscás.
                 </p>
             </div>
 
             <div class="container-group">
                 <p class="descripcion">
-                    Conectamos personas y familias con lo que necesitan, ofreciendo soluciones para 
-                    compras personales, regalos, artículos del hogar y más. 
+                    Conectamos personas y familias con lo que necesitan, ofreciendo soluciones para
+                    compras personales, regalos, artículos del hogar y más.
                     Siempre con atención personalizada y flexibilidad.
                 </p>
             </div>
 
             <div class="container-group">
                 <p class="descripcion">
-                    Nuestra base son valores sólidos: confianza, responsabilidad y cercanía. 
+                    Nuestra base son valores sólidos: confianza, responsabilidad y cercanía.
                     Estos principios nos impulsan a mejorar continuamente y a innovar en cada servicio.
                 </p>
             </div>
 
             <div class="container-group">
                 <p class="descripcion">
-                    Nuestro mayor compromiso es que cada compra sea simple, segura y con la tranquilidad 
+                    Nuestro mayor compromiso es que cada compra sea simple, segura y con la tranquilidad
                     de estar en buenas manos.
                 </p>
             </div>
 
             <div class="container-group">
                 <p class="descripcion">
-                    El proceso es fácil: puedes escribirnos haciendo una consulta a nuestro <a href="index.html#section-form">formulario</a>
-                    , o directamente explorá nuestros productos, añadí lo que quieras al carrito, 
+                    El proceso es fácil: puedes escribirnos haciendo una consulta a nuestro <a
+                        href="index.html#section-form">formulario</a>
+                    , o directamente explorá nuestros productos, añadí lo que quieras al carrito,
                     confirmá tu pedido y nosotros nos ocupamos del resto.
                 </p>
             </div>
@@ -154,11 +158,17 @@
         <h2 class="titulo-sucursales">Sucursales</h2>
         <div class="sucursales-maps">
             <div class="indiv-sucursal">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1146.1912662020666!2d-58.92050917142861!3d-34.43317439830645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc9d3525eae775%3A0x14aec9ca3ccdd7c9!2sParaguay%201730%2C%20B1630%20Pilar%2C%20Provincia%20de%20Buenos%20Aires!5e1!3m2!1ses-419!2sar!4v1730422385093!5m2!1ses-419!2sar" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1146.1912662020666!2d-58.92050917142861!3d-34.43317439830645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc9d3525eae775%3A0x14aec9ca3ccdd7c9!2sParaguay%201730%2C%20B1630%20Pilar%2C%20Provincia%20de%20Buenos%20Aires!5e1!3m2!1ses-419!2sar!4v1730422385093!5m2!1ses-419!2sar"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <h3>Sucursal 1</h3>
             </div>
             <div class="indiv-sucursal">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1145.973504301737!2d-58.908628371447534!3d-34.44904929830611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc9cd83934a2d7%3A0xafe12b654ad0e76f!2sParaguay%20328%2C%20B1630BJB%20Pilar%20Centro%2C%20Provincia%20de%20Buenos%20Aires!5e1!3m2!1ses-419!2sar!4v1730422575376!5m2!1ses-419!2sar" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1145.973504301737!2d-58.908628371447534!3d-34.44904929830611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc9cd83934a2d7%3A0xafe12b654ad0e76f!2sParaguay%20328%2C%20B1630BJB%20Pilar%20Centro%2C%20Provincia%20de%20Buenos%20Aires!5e1!3m2!1ses-419!2sar!4v1730422575376!5m2!1ses-419!2sar"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <h3>Sucursal 2</h3>
             </div>
         </div>
@@ -198,11 +208,13 @@
         <p class="contac">Contacto</p>
         <div class="container">
             <p class="mimail">
-                <a href="mailto:jle36@hotmail.com?subject=Consulta&body=Hola%2C%20quisiera%20más%20información%20sobre%20...">jle36@hotmail.com</a>
+                <a
+                    href="mailto:jle36@hotmail.com?subject=Consulta&body=Hola%2C%20quisiera%20más%20información%20sobre%20...">jle36@hotmail.com</a>
                 - Cel. +54-3487-616158
             </p>
             <div class="sociales">
-                <a href="https://www.linkedin.com/in/jose-luis-espinola-a036b7125/" target="_blank" title="Ir a LinkedIn">
+                <a href="https://www.linkedin.com/in/jose-luis-espinola-a036b7125/" target="_blank"
+                    title="Ir a LinkedIn">
                     <img class="linkedin" src="./img/Linkedin.png" alt="Linkedin">
                 </a>
                 <a href="https://github.com/JoseLuisEspinola" target="_blank" title="Ir a GitHub">
@@ -217,7 +229,8 @@
                 <a href="https://x.com/jle36" target="_blank" title="Ir a Twitter">
                     <img class="twitter" src="./img/Twitter.png" alt="Twitter">
                 </a> -->
-                <a href="https://api.whatsapp.com/send?phone=+543487616158&text=Hola%2C%20me%20gustaría%20realizar%20una%20página%20web...%20podrías%20contarme?" target="_blank" title="Ir a Whatsapp">
+                <a href="https://api.whatsapp.com/send?phone=+543487616158&text=Hola%2C%20me%20gustaría%20realizar%20una%20página%20web...%20podrías%20contarme?"
+                    target="_blank" title="Ir a Whatsapp">
                     <img class="whatsapp" src="./img/Whatsapp.png" alt="Whatsapp">
                 </a>
             </div>
@@ -225,18 +238,18 @@
         </div>
 
         <!-- ******** Copyright ******** -->
-        <p class="copyright">&copy; <span id="copyright-year"></span> Easy Buy - Todos los derechos reservados - Espinola José Luis</p>
+        <p class="copyright">&copy; <span id="copyright-year"></span> Easy Buy - Todos los derechos reservados -
+            Espinola José Luis</p>
         <script>
             const currentYear = new Date().getFullYear();
             document.getElementById('copyright-year').textContent = currentYear;
         </script>
     </footer>
 
-    <script src="https://kit.fontawesome.com/81581fb069.js"
-        crossorigin="anonymcus">
+    <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymcus">
     </script>
 
-    <script src="/js/contador-carrito.js"></script>   <!-- referencia solo a poner el numerito actualizado del carrito -->
+    <script src="/js/contador-carrito.js"></script> <!-- referencia solo a poner el numerito actualizado del carrito -->
     <script src="/js/contacto.js"></script>
     <script src="/js/title.js"></script>
     <script src="/js/cerrarsesion.js"></script>
@@ -244,4 +257,5 @@
 
     <script src="/js/animation.js"></script>
 </body>
+
 </html>
