@@ -94,7 +94,7 @@ function renderProductos(productos) {
             <td>${p.name || p.nombre || ''}</td>
             <td>${(p.unitPrice ?? p.price ?? p.precio) ? '$' + (Number(p.unitPrice ?? p.price ?? p.precio).toFixed(2)) : '—'}</td>
             <td>${p.stock ?? p.cantidad ?? 0}</td>
-            <td><img src="${p.image || p.imagen || ''}" alt="" style="height:40px;"></td>
+            <td><img src="${p.imageUrl || p.image || p.imagen || ''}" alt="" style="height:40px;"></td>
             <td>${p.activo === true ? 'Sí' : 'No'}</td>
             <td class="acciones-cell"></td>
         `;

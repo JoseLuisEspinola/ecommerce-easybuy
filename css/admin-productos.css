@@ -291,25 +291,28 @@ nav.abajo .main-name:hover {
 
 #crud-productos {
     width: 100%;
-
-    max-height: 87%;
-    min-height: 26%;
-
+    height: 85vh;
     margin-top: 100px;
     text-align: center;
     padding: 10px;
-
-    /* border: 2px solid blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #crud-productos h2 {
-    color: #ff4081;
-    font-size: clamp(1.4rem, 2vw + 1rem, 2rem);
+    color: var(--cs-color11);
+    font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
     margin-bottom: 6px;
-    text-shadow: 2px 2px #ffffff;
+    text-shadow: 1px 1px var(--cs-color07);
 }
 
 /* ====== Estilos CRUD Admin Productos ====== */
+#form-container {
+    display: none;
+    margin-top: 16px;
+}
+
 #crud-productos .admin-actions {
     display: flex;
     gap: 8px;
@@ -320,11 +323,11 @@ nav.abajo .main-name:hover {
 .btn {
     background: var(--cs-color01);
     color: var(--cs-color06);
+    font-size: clamp(0.6rem, 1vw, 1rem);
     border: none;
-    padding: 8px 12px;
+    padding: 6px 12px;
     border-radius: 6px;
     cursor: pointer;
-    font-weight: 600;
 }
 
 .btn:hover {
@@ -337,49 +340,25 @@ nav.abajo .main-name:hover {
     font-weight: 600;
 }
 
-#btn-form {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-content: center;
-    height: 50px;
-}
-
-#btn-form #btn-guardar,
-#btn-form #btn-cancelar {
-    margin-top: 10px;
-    padding: 4px 8px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-#btn-form #btn-guardar {
-    background: rgb(1, 170, 1);
-    color: var(--cs-color07);
-}
-
-#btn-form #btn-cancelar {
-    background: rgb(169, 170, 169);
-    color: var(--cs-color07);
-}
-
 #form-container {
     display: block;
+    width: 100%;
     max-width: 900px;
     margin: 0 auto;
 }
 
 #form-producto {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(54, 54, 54, 0.2);
+    border: 1px solid rgba(54, 54, 54, 0.2);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     padding: 20px;
     border-radius: 18px;
     display: grid;
+    width: 100%;
     grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: repeat(auto-fit, minmax(280px, auto)); */
+
     gap: 10px;
 }
 
@@ -390,23 +369,15 @@ nav.abajo .main-name:hover {
 
 #form-producto input[type="text"],
 #form-producto input[type="number"] {
-    padding: 8px;
+    padding: 6px;
     border-radius: 6px;
     border: 1px solid #ccc;
-}
-
-#form-producto [type="submit"],
-#form-producto button {
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
 }
 
 /* Mejoras específicas para labels y botones */
 #form-producto label {
     display: block;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--cs-color10);
 }
 
@@ -416,24 +387,68 @@ nav.abajo .main-name:hover {
 }
 
 #form-producto .actions {
-    grid-column: 1 / -1;
+    /*  grid-column: 1 / -1; */
     display: flex;
     gap: 8px;
 }
 
-#form-producto [type="submit"].primary {
-    background: var(--cs-color01);
-    color: var(--cs-color06);
+#btn-form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-content: center;
+
+    grid-column: 1 / -1;
 }
 
-#form-producto button.secondary {
-    background: #999;
-    color: #fff;
+#btn-form button {
+    flex: 1;
+    width: 100%;
 }
 
+#btn-form #btn-guardar,
+#btn-form #btn-cancelar {
+    margin-top: 10px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: clamp(0.6rem, 1vw, 1rem);
+    border: none;
+    cursor: pointer;
+}
+
+#btn-form #btn-guardar {
+    background: rgb(1, 170, 1);
+    color: var(--cs-color07);
+}
+
+#btn-form #btn-cancelar {
+    background: rgb(154, 155, 154);
+    color: var(--cs-color07);
+}
+
+#btn-form #btn-guardar:hover,
+#btn-form #btn-cancelar:hover {
+    opacity: 0.7;
+}
+
+
+/* *********  Mejoras para la Tabla de Productos *********** */
 #tabla-container {
-    margin: 16px;
-    padding: 20px;
+    margin: 10px;
+    padding: 10;
+    /* Sin padding arriba para que los productos no se traslapen por encima de la cabecera */
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    /* border: 2px solid red; */
+}
+
+#tabla-container::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Edge */
 }
 
 #tabla-productos {
@@ -442,14 +457,19 @@ nav.abajo .main-name:hover {
     background: rgba(139, 138, 138, 0.02);
     backdrop-filter: blur(26px);
     -webkit-backdrop-filter: blur(26px);
-    overflow-y: scroll;
+
+    /* border: 2px solid blue; */
 }
 
 #tabla-productos th {
-    background: rgba(0, 0, 0, 0.4);
+    position: sticky;
+    top: 0;
+    background: rgba(20, 20, 20, 0.9);
+    /* Fondo semiopaco para evitar traslapes al hacer scroll */
     color: var(--cs-color07);
     padding: 8px;
     text-align: left;
+    z-index: 2;
 }
 
 #tabla-productos td {
@@ -481,19 +501,10 @@ nav.abajo .main-name:hover {
     color: #fff;
 }
 
-@media (max-width: 768px) {
-    #form-producto {
-        grid-template-columns: 1fr;
-    }
-
-    nav {
-        position: static;
-    }
+.btn-editar:hover,
+.btn-borrar:hover {
+    opacity: 0.7;
 }
-
-
-
-
 
 
 
@@ -660,6 +671,50 @@ footer .copyright {
         font-size: 4rem;
     }
 }
+
+
+
+
+/*************************************/
+/* ***** Media Query con 768px ***** */
+/*************************************/
+@media (max-width: 768px) {
+    #form-producto {
+        grid-template-columns: 1fr 1fr;
+        padding: 12px;
+        font-size: 0.75rem;
+    }
+
+    #form-producto label,
+    #form-producto input,
+    #form-producto button {
+        font-size: 0.75rem;
+    }
+
+    #form-container,
+    #tabla-container {
+        margin: 8px;
+    }
+
+    #tabla-container {
+        padding: 0;
+    }
+
+    #tabla-productos {
+        font-size: 0.75rem;
+    }
+
+    #tabla-productos th,
+    #tabla-productos td {
+        padding: 6px 4px;
+    }
+
+    #tabla-productos img {
+        max-height: 30px;
+    }
+}
+
+
 
 
 

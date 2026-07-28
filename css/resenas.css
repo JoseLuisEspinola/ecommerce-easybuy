@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
     --cs-color01: #21d5fa;
     --cs-color02: #17b5d4;
@@ -66,9 +67,11 @@ nav.abajo {
     0% {
         transform: rotateY(360deg);
     }
+
     60% {
         transform: rotateY(0deg);
     }
+
     100% {
         transform: rotateY(0deg);
     }
@@ -108,7 +111,7 @@ nav.abajo {
     align-items: center;
     cursor: initial;
     opacity: 0;
-} 
+}
 
 nav ul {
     float: right;
@@ -192,7 +195,7 @@ li a:hover:after {
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
 }
 
 
@@ -207,20 +210,29 @@ li a:hover:after {
 }
 
 .container-user a {
-    position: relative; /* Hacer el contenedor relativo para posicionar el span */
-    /* color: inherit; */ /* Mantener el color por defecto */
+    position: relative;
+    /* Hacer el contenedor relativo para posicionar el span */
+    /* color: inherit; */
+    /* Mantener el color por defecto */
 }
 
 .container-user a span {
-    position: absolute; /* Posicionar relativo al ícono */
-    top: -8px; /* Ajusta según el tamaño del ícono */
-    right: -12px; /* Ajusta según la distancia del borde */
-    color: var(--cs-color07); 
+    position: absolute;
+    /* Posicionar relativo al ícono */
+    top: -8px;
+    /* Ajusta según el tamaño del ícono */
+    right: -12px;
+    /* Ajusta según la distancia del borde */
+    color: var(--cs-color07);
     background-color: red;
-    padding: 3px 6px; /* Tamaño del círculo */
-    font-size: 10px; /* Tamaño del texto */
-    border-radius: 50%; /* Convertirlo en un círculo */
-    font-weight: bold; /* Hacer que el texto resalte */
+    padding: 3px 6px;
+    /* Tamaño del círculo */
+    font-size: 10px;
+    /* Tamaño del texto */
+    border-radius: 50%;
+    /* Convertirlo en un círculo */
+    font-weight: bold;
+    /* Hacer que el texto resalte */
     text-align: center;
 }
 
@@ -256,10 +268,13 @@ nav.abajo .main-name:hover {
     text-shadow: 2px 2px var(--cs-color01);
 }
 
+
+
 /**********************************************/
-/* **** Zona central de la primer pagina **** */ 
+/* **** Zona central de la primer pagina **** */
 #zona1 {
-    background: url(../img/ecommerce-cleanup.jpg) no-repeat;   /* Es para que sea SOLO una imagen */
+    background: url(../img/ecommerce-cleanup.jpg) no-repeat;
+    /* Es para que sea SOLO una imagen */
     background-size: cover;
     background-position: center center;
     /* height: calc(100vh - 100px); */
@@ -397,7 +412,7 @@ form label {
 }
 
 .borrar-res:hover {
-    background-color:#ca2058;
+    background-color: #ca2058;
 }
 
 /* ***************************** */
@@ -415,13 +430,15 @@ form label {
     gap: 1rem;
     overflow-y: auto;
 
-    scrollbar-width: none;  /* Oculta la barra en Firefox */
+    scrollbar-width: none;
+    /* Oculta la barra en Firefox */
 
     /* border: 2px solid green; */
 }
 
 .container-cards::-webkit-scrollbar {
-    display: none;  /* Oculta la barra en Chrome, Edge y Safari */
+    display: none;
+    /* Oculta la barra en Chrome, Edge y Safari */
 }
 
 .card-resenas {
@@ -502,13 +519,13 @@ form label {
 }
 
 /* Boton flecha inicio */
-.flecha-arriba{
+.flecha-arriba {
     bottom: 4px;
     right: 4px;
 
     position: fixed;
 
-    height: 40px; 
+    height: 40px;
     width: 40px;
     cursor: pointer;
 }
@@ -551,7 +568,10 @@ footer .container {
     padding: 0 4px;
 }
 
-.linkedin, .github, .facebook, .whatsapp {
+.linkedin,
+.github,
+.facebook,
+.whatsapp {
     width: 36px;
     height: 36px;
     border-radius: 50px;
@@ -559,8 +579,10 @@ footer .container {
     transition: 0.5s;
 }
 
-.linkedin:hover, .github:hover,
-.facebook:hover, .whatsapp:hover {
+.linkedin:hover,
+.github:hover,
+.facebook:hover,
+.whatsapp:hover {
     /* background-color: #ffffff; */
     box-shadow: 1px 1px 14px 0 #abacaf, -1px -1px 14px 0 #abacaf;
 }
@@ -584,10 +606,10 @@ footer .copyright {
         height: 50px;
         width: 50px;
     }
-    
+
     .main-name {
         font-size: 1.3rem;
-    } 
+    }
 
     .checkbtn {
         display: block;
@@ -619,13 +641,14 @@ footer .copyright {
         font-size: 20px;
     }
 
-    li a:hover, li a.active {
+    li a:hover,
+    li a.active {
         background: none;
         color: red;
     }
 
-    #check:checked ~ ul {
-        left:0;
+    #check:checked~ul {
+        left: 0;
     }
 
     .presentacion h1 {
@@ -639,7 +662,7 @@ footer .copyright {
 @media (max-width: 1090px) {
     .main-name {
         font-size: 1.4rem;
-    } 
+    }
 }
 
 
@@ -701,15 +724,15 @@ footer .copyright {
     footer {
         padding: 30px 0;
     }
-    
+
     p.contac {
         font-size: 1.6rem;
     }
-    
+
     p.mimail {
         font-size: 0.9rem;
     }
-    
+
     footer .copyright {
         font-size: 0.74rem;
         font-stretch: normal;
