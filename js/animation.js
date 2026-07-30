@@ -13,7 +13,6 @@ sr.reveal('.resenas', {
     distance: '-300px'
 });
 
-
 sr.reveal('.titulo-sucursales', {
     duration: 2000,
     origin: 'top',
@@ -71,19 +70,21 @@ sr.reveal('.title-resenas', {
 
 /* admin-productos.html */
 sr.reveal('.title-crud-productos', {
-    duration: 4000,
+    duration: 3000,
     origin: 'bottom',
     distance: '300px'
 });
 
 sr.reveal('#btn-nuevo', {
-    duration: 3000,
-    origin: 'right',
-    distance: '200px'
+    duration: 1800,   // velocidad de la animación
+    delay: 1800,       // retardo antes de aparecer
+    opacity: 0,       // empieza invisible
+    scale: 0.9        // opcional: aparece con un leve zoom 
 });
 
 sr.reveal('#btn-refrescar', {
-    duration: 3000,
-    origin: 'left',
-    distance: '200px'
+    duration: 1800,   // velocidad de la animación
+    delay: 1800,       // retardo antes de aparecer
+    opacity: 0,       // empieza invisible
+    scale: 0.9        // opcional: aparece con un leve zoom
 });
