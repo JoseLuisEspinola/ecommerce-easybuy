@@ -12,7 +12,7 @@ function cerrarSesion() {
     localStorage.setItem("sesionActiva", "false");
 
     // Redirigir al login
-    window.location.href = "login.html"; 
+    window.location.href = "login.html";
 }
 
 // También cerrar sesión al cerrar pestaña/ventana
