@@ -328,6 +328,13 @@ nav.abajo .main-name:hover {
     /* Oculta la barra en Chrome, Edge y Safari */
 }
 
+.no-products {
+    color: red;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: auto;
+}
+
 .card {
     background-color: #f5f5f5;
     border: 1px solid #ddd;
@@ -375,16 +382,30 @@ nav.abajo .main-name:hover {
     overflow-y: auto;
 }
 
+.offer {
+    color: #0f24e0;
+    font-weight: 500;
+}
+
 .card .precio {
     /* height: 10%; */
     font-size: 14px;
     margin-top: 10px;
 }
 
+.card .cantidad-label {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
 .card input {
     /* height: 10%; */
     font-size: 11px;
-    margin-bottom: 6px;
+    margin: 4px;
+    /* margin-bottom: 6px; */
     padding: 4px;
     width: 50px;
     text-align: center;

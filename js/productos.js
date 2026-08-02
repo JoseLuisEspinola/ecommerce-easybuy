@@ -3,7 +3,7 @@ let rawUsuario = localStorage.getItem('usuarioLogueado');
 let usuarioLogueado = rawUsuario ? JSON.parse(rawUsuario) : null;
 
 // URL base de tu backend en Vercel/Render
-const API_BASE = "https://node-js-final-2026.vercel.app";  
+const API_BASE = "https://node-js-final-2026.vercel.app";
 
 // Carrito del usuario logueado (seguro contra "undefined")
 let rawCarrito = localStorage.getItem(`carrito_${usuarioLogueado?.usuario}`);
@@ -28,6 +28,7 @@ function cargarCarritoDesdeLocalStorage() {
 
 cargarCarritoDesdeLocalStorage();
 
+
 const resultadosDiv = document.getElementById('container-productos');
 let productosDisponibles = [];
 
@@ -39,46 +40,48 @@ function mostrarProductos() {
     const headers = usuarioLogueado?.token ? { Authorization: `Bearer ${usuarioLogueado.token}` } : {};
 
     axios.get(`${API_BASE}${endpoint}`, { headers })
-    .then(response => {
-        const data = Array.isArray(response.data)
-            ? response.data
-            : response.data.products;
+        .then(response => {
+            const data = Array.isArray(response.data)
+                ? response.data
+                : response.data.products;
 
-        productosDisponibles = Array.isArray(data) ? data : [];
+            productosDisponibles = Array.isArray(data) ? data : [];
 
-        if (!productosDisponibles || productosDisponibles.length === 0) {
-            resultadosDiv.innerHTML = '<p>No hay productos disponibles.</p>';
-            return;
-        }
+            if (!productosDisponibles || productosDisponibles.length === 0) {
+                resultadosDiv.innerHTML = '<p class="no-products">No hay productos disponibles.</p>';
+                return;
+            }
 
-        productosDisponibles.forEach(product => {
-            const itemDiv = document.createElement('div');
-            itemDiv.classList.add('card');
+            productosDisponibles.forEach(product => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('card');
 
-            const precioVisible = usuarioLogueado?.token && typeof product.price !== 'undefined'
-                ? product.price
-                : 0;
+                const precioVisible = usuarioLogueado?.token && typeof product.price !== 'undefined'
+                    ? product.price
+                    : 0;
 
-            itemDiv.innerHTML = `
+                itemDiv.innerHTML = `
                 <img src="${product.imageUrl || ''}" alt="${product.name}">
                 <h2>${product.name}</h2>
                 <p class="description">${product.description || ''}</p>
                 ${product.discount ? `<span class="offer">En oferta!</span>` : ""}
                 <p class="precio"><strong>Precio:</strong> ${usuarioLogueado?.token ? `$${precioVisible}` : 'Oculto para usuarios no logueados'}</p>
-                ${
-                  usuarioLogueado?.token
-                    ? `<input type="number" id="cantidad-${product.id}" value="1" min="1">
-                       <button onclick="agregarAlCarrito('${product.id}')">Agregar al carrito</button>`
-                    : `<p class="login-msg">Debe iniciar sesión para comprar</p>`
-                }
+                ${usuarioLogueado?.token
+                        ? `<label class=cantidad-label for="cantidad-${product.id}">
+                                Cantidad:
+                                <input type="number" id="cantidad-${product.id}" value="1" min="1">
+                           </label>
+                           <button onclick="agregarAlCarrito('${product.id}')">Agregar al carrito</button>`
+                        : `<p class="login-msg">Debe iniciar sesión para comprar</p>`
+                    }
             `;
 
-            resultadosDiv.appendChild(itemDiv);
+                resultadosDiv.appendChild(itemDiv);
+            });
+        })
+        .catch(error => {
+            alert('Error al obtener productos: ' + error.message);
         });
-    })
-    .catch(error => {
-        alert('Error al obtener productos: ' + error.message);
-    });
 }
 
 // Agregar producto al carrito local en localStorage
@@ -103,7 +106,7 @@ function agregarAlCarrito(productId) {
     actualizarCarritoLocal(producto, cantidad);
     localStorage.setItem(`carrito_${usuarioLogueado.usuario}`, JSON.stringify(carrito));
     actualizarNumeroCarrito();
-    alert('Producto agregado al carrito.');
+    alert(`Producto ${producto.name} agregado al carrito.`);
 }
 
 function actualizarCarritoLocal(producto, cantidad) {
