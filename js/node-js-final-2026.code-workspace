@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../node-js-final-2026"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "EasyBuy"
+	}
+}

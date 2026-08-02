@@ -288,19 +288,24 @@ nav.abajo .main-name:hover {
     /* align-items: center; */
 
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;
+    /* evita la barra del body (doble scroll) */
     /* border: 2px solid red; */
 }
 
 #container-resenas {
     width: 100%;
-
-    max-height: 87%;
-    min-height: 26%;
+    height: 87vh;
+    /* altura fija, como #crud-productos en admin */
 
     margin-top: 100px;
     text-align: center;
     padding: 10px;
+
+    display: flex;
+    /* patrón admin-productos */
+    flex-direction: column;
+    align-items: center;
 
     /* border: 2px solid blue; */
 }
@@ -314,6 +319,7 @@ nav.abajo .main-name:hover {
 
 
 /* **** Formulario resenas **** */
+/********************************/
 .content-form-resenas {
     width: 90%;
     display: flex;
@@ -328,24 +334,25 @@ form#form-resenas {
     justify-content: center;
     align-items: center;
     margin: 4px 4px 0;
+    gap: 10px;
 }
 
 form label {
     /* margin-right: 8px; */
     color: #0307fa;
     font-weight: bold;
-    font-size: clamp(0.563rem, 1vw + 0.25rem, 0.9rem);
+    font-size: clamp(0.563rem, 1vw + 0.25rem, 0.95rem);
 }
 
-#nombre-res {
-    /* width: 100%; */
-    text-transform: capitalize;
+#producto-res option,
+#rating-res option {
+    background-color: #585858;
 }
 
 #producto-res,
 #comentario-res,
 #rating-res {
-    margin-right: 4%;
+    /* margin-right: 4%; */
     height: 34px;
     font-size: clamp(0.6rem, 1vw + 0.25rem, 0.875rem);
     border: none;
@@ -381,8 +388,6 @@ form label {
     display: flex;
     justify-content: center;
     align-self: flex-end;
-    /* margin-inline: 8px; */
-    /* flex: 1; */
 }
 
 .btn-res {
@@ -420,9 +425,13 @@ form label {
 /* **** Tarjetas de reseñas **** */
 .container-cards {
     width: 80%;
-    height: 88%;
     margin: 0 auto;
     padding: 10px 16px;
+
+    flex: 1;
+    /* patrón admin-productos */
+    min-height: 0;
+    /* clave: permite al flex child encogerse y no desbordar */
 
     display: grid;
     grid-template-columns:
@@ -679,8 +688,8 @@ footer .copyright {
         min-height: 28px;
     }
 
-    #nombre-res,
-    #comentario-res {
+    #producto-res,
+    #rating-res {
         height: 28px;
     }
 }

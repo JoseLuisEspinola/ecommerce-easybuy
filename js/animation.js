@@ -13,6 +13,12 @@ sr.reveal('.resenas', {
     distance: '-300px'
 });
 
+sr.reveal('.title-nosotros', {
+    duration: 2000,
+    origin: 'top',
+    distance: '200px'
+});
+
 sr.reveal('.titulo-sucursales', {
     duration: 2000,
     origin: 'top',

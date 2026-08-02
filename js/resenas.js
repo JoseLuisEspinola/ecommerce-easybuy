@@ -3,7 +3,8 @@
 // const API_URL = "http://localhost:3000/api/reviews"
 const API_BASE = "https://node-js-final-2026.vercel.app";
 const API_URL = `${API_BASE}/api/reviews`;
-const PRODUCTS_API_URL = `${API_BASE}/api/products`;
+const PRODUCTS_API_URL = `${API_BASE}/api/products`;      // requiere token (usado en productos.js)
+const PRODUCTS_API_URL_PUBLIC = `${API_BASE}/api/pub/products`;  // público: solo id y name, sin precio
 
 
 // Verificar si el usuario está logueado
@@ -26,19 +27,21 @@ function obtenerToken() {
     return usuario?.token || localStorage.getItem('token') || '';
 }
 
-// Cargar productos para el selector del formulario
+// Cargar productos para el selector del formulario.
+// Siempre usa el endpoint público: el select solo necesita id y name,
+// no el precio (eso le corresponde a productos.js / productos.html).
 async function cargarProductosParaResenas() {
     const select = document.getElementById('producto-res');
     if (!select) return;
 
     try {
-        const response = await fetch(PRODUCTS_API_URL, {
+        const response = await fetch(PRODUCTS_API_URL_PUBLIC, {
             method: 'GET',
             headers: { Accept: 'application/json' }
         });
 
         if (!response.ok) {
-            throw new Error('No se pudieron cargar los productos');
+            throw new Error(`Error ${response.status} al cargar los productos`);
         }
 
         const data = await response.json();
@@ -121,7 +124,13 @@ async function validarFormulario(event) {
         }
 
         const resenaGuardada = await response.json();
-        agregarTarjetaResena(resenaGuardada);
+
+        // El backend no devuelve productName, pero ya tenemos el nombre
+        // en el <select> que se cargó al iniciar la página.
+        const selectProducto = document.getElementById('producto-res');
+        const productName = selectProducto.options[selectProducto.selectedIndex]?.textContent || 'Producto sin nombre';
+
+        agregarTarjetaResena({ ...resenaGuardada, productName });
 
         document.getElementById('form-resenas').reset();
     } catch (error) {
@@ -168,55 +177,57 @@ function agregarTarjetaResena(resena) {
 
 // Cargar reseñas públicas
 async function cargarResenas() {
-  try {
-    const response = await fetch(API_URL, {
-      method: 'GET',
-      headers: { Accept: 'application/json' }
-    });
+    try {
+        const response = await fetch(API_URL, {
+            method: 'GET',
+            headers: { Accept: 'application/json' }
+        });
 
-    if (!response.ok) {
-      const texto = await response.text();
-      throw new Error(`Error ${response.status} al cargar reseñas. ${texto}`);
+        if (!response.ok) {
+            const texto = await response.text();
+            throw new Error(`Error ${response.status} al cargar reseñas. ${texto}`);
+        }
+
+        const resenas = await response.json();
+        const contenedor = document.querySelector('.container-cards');
+        contenedor.innerHTML = '';
+
+        const productos = await obtenerProductosMap();
+
+        resenas.forEach(resena => {
+            const producto = productos.get(resena.productId);
+            agregarTarjetaResena({
+                ...resena,
+                productName: producto?.name || producto?.title || producto?.productName || 'Producto sin nombre'
+            });
+        });
+    } catch (error) {
+        console.error(error);
+        alert('No se pudieron cargar las reseñas. Revisa que la API de Vercel responda correctamente.');
     }
-
-    const resenas = await response.json();
-    const contenedor = document.querySelector('.container-cards');
-    contenedor.innerHTML = '';
-
-    const productos = await obtenerProductosMap();
-
-    resenas.forEach(resena => {
-      const producto = productos.get(resena.productId);
-      agregarTarjetaResena({
-        ...resena,
-        productName: producto?.name || producto?.title || producto?.productName || 'Producto sin nombre'
-      });
-    });
-  } catch (error) {
-    console.error(error);
-    alert('No se pudieron cargar las reseñas. Revisa que la API de Vercel responda correctamente.');
-  }
 }
 
 async function obtenerProductosMap() {
-  try {
-    const response = await fetch(PRODUCTS_API_URL, {
-      method: 'GET',
-      headers: { Accept: 'application/json' }
-    });
+    // Usamos el endpoint público: solo necesitamos id y name para las tarjetas.
+    // El endpoint privado (/api/products) requiere token y sin él devuelve 403.
+    try {
+        const response = await fetch(PRODUCTS_API_URL_PUBLIC, {
+            method: 'GET',
+            headers: { Accept: 'application/json' }
+        });
 
-    if (!response.ok) {
-      throw new Error('No se pudieron cargar los productos');
+        if (!response.ok) {
+            throw new Error('No se pudieron cargar los productos');
+        }
+
+        const data = await response.json();
+        const productos = Array.isArray(data) ? data : data.products || [];
+
+        return new Map(productos.map(producto => [producto.id, producto]));
+    } catch (error) {
+        console.error(error);
+        return new Map();
     }
-
-    const data = await response.json();
-    const productos = Array.isArray(data) ? data : data.products || [];
-
-    return new Map(productos.map(producto => [producto.id, producto]));
-  } catch (error) {
-    console.error(error);
-    return new Map();
-  }
 }
 
 // Eventos
