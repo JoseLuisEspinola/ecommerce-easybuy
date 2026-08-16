@@ -285,12 +285,11 @@ nav.abajo .main-name:hover {
     justify-content: center;
     /* align-items: center; */
 
-    position: relative;
-    overflow-x: hidden;
     /* border: 2px solid red; */
 }
 
-#crud-productos {
+
+#crud-reviews {
     width: 100%;
     height: 85vh;
     margin-top: 100px;
@@ -301,20 +300,20 @@ nav.abajo .main-name:hover {
     align-items: center;
 }
 
-#crud-productos h2 {
+#crud-reviews h2 {
     color: var(--cs-color11);
     font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
     margin-bottom: 6px;
     text-shadow: 1px 1px var(--cs-color07);
 }
 
-/* ====== Estilos CRUD Admin Productos ====== */
+/* ====== Estilos CRUD Admin Usuarios ====== */
 #form-container {
     display: none;
     margin-top: 16px;
 }
 
-#crud-productos .admin-actions {
+#crud-reviews .admin-actions {
     display: flex;
     gap: 8px;
     justify-content: center;
@@ -350,7 +349,7 @@ nav.abajo .main-name:hover {
     display: none;
 }
 
-#form-producto {
+#form-review {
     background: rgba(54, 54, 54, 0.2);
     border: 1px solid rgba(54, 54, 54, 0.2);
     backdrop-filter: blur(16px);
@@ -365,31 +364,31 @@ nav.abajo .main-name:hover {
     gap: 10px;
 }
 
-#form-producto div {
+#form-review div {
     display: flex;
     flex-direction: column;
 }
 
-#form-producto input[type="text"],
-#form-producto input[type="number"] {
+#form-review input[type="text"] {
     padding: 6px;
     border-radius: 6px;
     border: 1px solid #ccc;
 }
 
 /* Mejoras específicas para labels y botones */
-#form-producto label {
+#form-review label {
     display: block;
     font-weight: 400;
     color: var(--cs-color10);
 }
 
-#form-producto input,
-#form-producto textarea {
+#form-review input {
     width: 100%;
+    border-radius: 6px;
+    max-height: 32px;
 }
 
-#form-producto .actions {
+#form-review .actions {
     /*  grid-column: 1 / -1; */
     display: flex;
     gap: 8px;
@@ -454,33 +453,45 @@ nav.abajo .main-name:hover {
     /* Chrome, Safari, Edge */
 }
 
-#tabla-productos {
+#tabla-reviews {
     width: 100%;
     border-collapse: collapse;
-    background: rgba(139, 138, 138, 0.02);
+    background: rgba(90, 44, 44, 0.02);
     backdrop-filter: blur(26px);
     -webkit-backdrop-filter: blur(26px);
 
+    table-layout: fixed;
+    /* Para que las columnas se mantengan en su ancho */
     /* border: 2px solid blue; */
 }
 
-#tabla-productos th {
+#tabla-reviews th {
     position: sticky;
     top: 0;
-    background: rgba(1, 51, 61, 0.8);
+    background: rgb(85, 85, 85);
     /* Fondo semiopaco para evitar traslapes al hacer scroll */
     color: var(--cs-color07);
     padding: 8px;
     text-align: left;
     z-index: 2;
+
+    /* agregue nuevo */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-#tabla-productos td {
+#tabla-reviews td {
     padding: 8px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+
+    /* agregue nuevo */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-#tabla-productos img {
+#tabla-reviews img {
     max-height: 40px;
     display: block;
 }
@@ -508,6 +519,52 @@ nav.abajo .main-name:hover {
 .btn-borrar:hover {
     opacity: 0.7;
 }
+
+
+/* Definir anchos en % */
+/* Comentario */
+#tabla-reviews th:nth-child(1),
+#tabla-reviews td:nth-child(1) {
+    width: 25%;
+}
+
+/* ID Producto */
+#tabla-reviews th:nth-child(2),
+#tabla-reviews td:nth-child(2) {
+    width: 10%;
+}
+
+/* Puntuación */
+#tabla-reviews th:nth-child(3),
+#tabla-reviews td:nth-child(3) {
+    width: 10%;
+}
+
+/* ID Usuario */
+#tabla-reviews th:nth-child(4),
+#tabla-reviews td:nth-child(4) {
+    width: 10%;
+}
+
+/* Usuario */
+#tabla-reviews th:nth-child(5),
+#tabla-reviews td:nth-child(5) {
+    width: 15%;
+}
+
+/* Fecha */
+#tabla-reviews th:nth-child(6),
+#tabla-reviews td:nth-child(6) {
+    width: 15%;
+}
+
+/* Acciones */
+#tabla-reviews th:nth-child(7),
+#tabla-reviews td:nth-child(7) {
+    width: 15%;
+}
+
+
 
 
 
@@ -646,6 +703,10 @@ footer .copyright {
 }
 
 
+/*************************************/
+/* ***** Media Query con 952px ***** */
+@media (max-width: 952px) {}
+
 
 
 
@@ -665,15 +726,15 @@ footer .copyright {
 /* ***** Media Query con 768px ***** */
 /*************************************/
 @media (max-width: 768px) {
-    #form-producto {
+    #form-usuario {
         grid-template-columns: 1fr 1fr;
         padding: 12px;
         font-size: 0.75rem;
     }
 
-    #form-producto label,
-    #form-producto input,
-    #form-producto button {
+    #form-usuario label,
+    #form-usuario input,
+    #form-usuario button {
         font-size: 0.75rem;
     }
 
@@ -686,22 +747,15 @@ footer .copyright {
         padding: 0;
     }
 
-    #tabla-productos {
+    #tabla-usuarios {
         font-size: 0.75rem;
     }
 
-    #tabla-productos th,
-    #tabla-productos td {
+    #tabla-usuarios th,
+    #tabla-usuarios td {
         padding: 6px 4px;
     }
-
-    #tabla-productos img {
-        max-height: 30px;
-    }
 }
-
-
-
 
 
 /*************************************/

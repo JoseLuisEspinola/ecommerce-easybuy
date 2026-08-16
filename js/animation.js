@@ -94,3 +94,53 @@ sr.reveal('#btn-refrescar', {
     opacity: 0,       // empieza invisible
     scale: 0.9        // opcional: aparece con un leve zoom
 });
+
+
+
+
+/* admin-usuarios.html */
+sr.reveal('.title-crud-usuarios', {
+    duration: 3000,
+    origin: 'bottom',
+    distance: '300px'
+});
+
+sr.reveal('#btn-nuevo', {
+    duration: 1800,   // velocidad de la animación
+    delay: 1800,       // retardo antes de aparecer
+    opacity: 0,       // empieza invisible
+    scale: 0.9        // opcional: aparece con un leve zoom 
+});
+
+sr.reveal('#btn-refrescar', {
+    duration: 1800,   // velocidad de la animación
+    delay: 1800,       // retardo antes de aparecer
+    opacity: 0,       // empieza invisible
+    scale: 0.9        // opcional: aparece con un leve zoom
+});
+
+
+
+
+
+/* admin-resenas.html */
+sr.reveal('.title-crud-reviews', {
+    duration: 3000,
+    origin: 'bottom',
+    distance: '300px'
+});
+
+sr.reveal('#btn-nuevo', {
+    duration: 1800,   // velocidad de la animación
+    delay: 1800,       // retardo antes de aparecer
+    opacity: 0,       // empieza invisible
+    scale: 0.9        // opcional: aparece con un leve zoom 
+});
+
+sr.reveal('#btn-refrescar', {
+    duration: 1800,   // velocidad de la animación
+    delay: 1800,       // retardo antes de aparecer
+    opacity: 0,       // empieza invisible
+    scale: 0.9        // opcional: aparece con un leve zoom
+});
+
