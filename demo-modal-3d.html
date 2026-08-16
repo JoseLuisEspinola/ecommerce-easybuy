@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demostración - Certificados 3D con Imagen Real de Python</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0f111a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        header h1 {
+            color: #00d2ff;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .container-certificates {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .cert-card {
+            background: #1e2235;
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-8px);
+            border-color: #00d2ff;
+        }
+
+        .cert-card.featured {
+            border: 2px solid #f59e0b;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+        }
+
+        .cert-card h3 {
+            margin: 0 0 12px 0;
+            color: #38bdf8;
+            font-size: 1.3rem;
+        }
+
+        .cert-card p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .btn-ver-3d {
+            background: linear-gradient(135deg, #00d2ff 0%, #0072ff 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: opacity 0.2s ease, box-shadow 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-ver-3d.gold {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #ffffff;
+        }
+
+        .btn-ver-3d:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+        }
+
+        .btn-ver-3d.gold:hover {
+            box-shadow: 0 0 18px rgba(245, 158, 11, 0.6);
+        }
+
+        /* MODAL 3D */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(10, 12, 20, 0.88);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 9999;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: #181b2a;
+            border-radius: 20px;
+            width: 92%;
+            max-width: 950px;
+            height: 85vh;
+            max-height: 720px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            padding: 16px 24px;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #38bdf8;
+        }
+
+        .modal-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-pdf {
+            background: #e11d48;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: background 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-pdf:hover {
+            background: #be123c;
+        }
+
+        .btn-close {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.8rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+
+        .btn-close:hover {
+            color: #ff4757;
+        }
+
+        #canvas-container {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            cursor: grab;
+        }
+
+        #canvas-container:active {
+            cursor: grabbing;
+        }
+
+        .modal-footer {
+            padding: 14px 24px;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Certificados 3D con Firma Original</h1>
+        <p>Haz clic en el certificado de <strong>Full Stack Python</strong> para ver tu <strong>diploma PNG real con
+                firma oficial</strong> cargado en 3D sobre la credencial.</p>
+    </header>
+
+    <div class="container-certificates">
+
+        <!-- Certificado 1: Python REAL (Con tu archivo PNG oficial) -->
+        <div class="cert-card featured">
+            <div>
+                <h3 style="color:#f59e0b;">🏆 Full Stack Python (PNG REAL)</h3>
+                <p>Codo a Codo (2024). Clic abajo para ver tu diploma oficial en 3D con todas las firmas, logos y sello
+                    institucional.</p>
+            </div>
+            <button class="btn-ver-3d gold"
+                onclick="openCertModal('Full Stack Python - Codo a Codo', 'Codo a Codo 2024', '#f59e0b', 'PYTHON', 'img/certificado/Certificado_CAC_full_stack_python_2024.png', 'img/certificado/Certificado_CAC_full_stack_python_2024.png')">
+                ✨ VER DIPLOMA REAL 3D
+            </button>
+        </div>
+
+        <!-- Certificado 2: Node.js -->
+        <div class="cert-card">
+            <div>
+                <h3>Back-End / Node JS</h3>
+                <p>Talento Tech (2026). Certificación de desarrollo de API REST con Node.js y Firestore.</p>
+            </div>
+            <button class="btn-ver-3d"
+                onclick="openCertModal('Back-End Node.js', 'Talento Tech 2026', '#10b981', 'NODE.JS', null, null)">
+                ✨ VER CERTIFICADO 3D
+            </button>
+        </div>
+
+        <!-- Certificado 3: React.js -->
+        <div class="cert-card">
+            <div>
+                <h3>Front-End / React JS</h3>
+                <p>Talento Tech (2025). Certificación oficial de Front-End avanzado con React.js.</p>
+            </div>
+            <button class="btn-ver-3d"
+                onclick="openCertModal('React.js Front-End', 'Talento Tech 2025', '#06b6d4', 'REACT.JS', null, null)">
+                ✨ VER CERTIFICADO 3D
+            </button>
+        </div>
+
+        <!-- Certificado 4: Inteligencia Artificial -->
+        <div class="cert-card">
+            <div>
+                <h3>Inteligencia Artificial</h3>
+                <p>Talento Tech (2025). Certificación de capacitación en IA y Prompt Engineering.</p>
+            </div>
+            <button class="btn-ver-3d"
+                onclick="openCertModal('Inteligencia Artificial', 'Talento Tech 2025', '#a855f7', 'I.A.', null, null)">
+                ✨ VER CERTIFICADO 3D
+            </button>
+        </div>
+
+    </div>
+
+    <!-- MODAL 3D -->
+    <div class="modal-overlay" id="certModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Visualizador 3D con Firma Original</h2>
+                <div class="modal-actions">
+                    <a href="#" id="btnPdfLink" target="_blank" class="btn-pdf">📄 Abrir Imagen Original</a>
+                    <button class="btn-close" onclick="closeCertModal()">&times;</button>
+                </div>
+            </div>
+            <div id="canvas-container"></div>
+            <div class="modal-footer">
+                <span>💡 Arrastra con el mouse para rotar en 3D | Rueda para Zoom</span>
+                <span style="color:#00d2ff;">Diploma original firmado en 3D real</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts Three.js -->
+    <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <script>
+        let scene, camera, renderer, controls, certMesh;
+        let isInitialized = false;
+        const container = document.getElementById('canvas-container');
+        const textureLoader = new THREE.TextureLoader();
+
+        function initThreeJS() {
+            scene = new THREE.Scene();
+
+            camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.set(0, 0, 4.5);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setClearColor(0x141625, 1);
+            container.appendChild(renderer.domElement);
+
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+
+            // Luces profesionales
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
+            scene.add(ambientLight);
+
+            const mainLight = new THREE.DirectionalLight(0xffffff, 1.2);
+            mainLight.position.set(5, 5, 5);
+            scene.add(mainLight);
+
+            const goldPointLight = new THREE.PointLight(0xf59e0b, 1.5, 12);
+            goldPointLight.position.set(-4, 2, 3);
+            scene.add(goldPointLight);
+
+            function animate() {
+                requestAnimationFrame(animate);
+                if (certMesh && isModalOpen) {
+                    certMesh.rotation.y += 0.004; // Rotación suave automática solo con el modal activo
+                }
+                controls.update();
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', onWindowResize);
+            isInitialized = true;
+        }
+
+        // Textura simulada de respaldo si no hay imagen PNG cargada
+        function createCertificateTexture(title, subtitle, accentColor, tag) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 1024;
+            canvas.height = 680;
+            const ctx = canvas.getContext('2d');
+
+            const bgGrad = ctx.createLinearGradient(0, 0, 1024, 680);
+            bgGrad.addColorStop(0, '#0f172a');
+            bgGrad.addColorStop(1, '#1e293b');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, 1024, 680);
+
+            ctx.strokeStyle = accentColor;
+            ctx.lineWidth = 14;
+            ctx.strokeRect(20, 20, 984, 640);
+
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(34, 34, 956, 612);
+
+            ctx.fillStyle = accentColor;
+            ctx.beginPath();
+            ctx.arc(512, 110, 45, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 24px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(tag, 512, 110);
+
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '22px sans-serif';
+            ctx.fillText('CERTIFICADO DIGITAL DE APROBACIÓN', 512, 200);
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 44px sans-serif';
+            ctx.fillText('José Luis Espínola', 512, 270);
+
+            ctx.fillStyle = accentColor;
+            ctx.font = 'bold 36px sans-serif';
+            ctx.fillText(title, 512, 350);
+
+            ctx.fillStyle = '#cbd5e1';
+            ctx.font = '26px sans-serif';
+            ctx.fillText(`Otorgado por: ${subtitle}`, 512, 420);
+
+            ctx.strokeStyle = '#64748b';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(350, 540);
+            ctx.lineTo(674, 540);
+            ctx.stroke();
+
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = 'italic 18px sans-serif';
+            ctx.fillText('Firma y Certificación Digital de Competencias', 512, 570);
+
+            return new THREE.CanvasTexture(canvas);
+        }
+
+        // Cargar Modal con la Imagen Real del Certificado Firmado
+        function openCertModal(title, subtitle, accentColor, tag, imagePath, pdfPath) {
+            document.getElementById('modalTitle').textContent = `Certificado 3D: ${title}`;
+            const pdfBtn = document.getElementById('btnPdfLink');
+
+            if (pdfPath || imagePath) {
+                pdfBtn.href = pdfPath || imagePath;
+                pdfBtn.style.display = 'inline-flex';
+            } else {
+                pdfBtn.style.display = 'none';
+            }
+
+            const modal = document.getElementById('certModal');
+            modal.classList.add('active');
+            isModalOpen = true;
+
+            if (!isInitialized) {
+                initThreeJS();
+            }
+
+            // Resetear cámara y controles al frente
+            camera.position.set(0, 0, 4.5);
+            controls.target.set(0, 0, 0);
+            controls.update();
+
+            if (certMesh) {
+                scene.remove(certMesh);
+            }
+
+            let width3D = 3.3;
+            let height3D = 2.2;
+
+            function buildMesh(texture) {
+                if (certMesh) scene.remove(certMesh);
+
+                const geometry = new THREE.BoxGeometry(width3D, height3D, 0.08);
+                const sideMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.3, metalness: 0.8 });
+                const frontMat = new THREE.MeshStandardMaterial({ map: texture, roughness: 0.25, metalness: 0.1 });
+                const backMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.5 });
+
+                const materials = [sideMat, sideMat, sideMat, sideMat, frontMat, backMat];
+
+                certMesh = new THREE.Mesh(geometry, materials);
+
+                // Asegurar que la cara frontal apunte exactamente al frente (rotación 0)
+                certMesh.rotation.set(0, 0, 0);
+                scene.add(certMesh);
+            }
+
+            if (imagePath) {
+                textureLoader.load(imagePath, (texture) => {
+                    // Ajustar proporción exacta del certificado si la imagen tiene aspect ratio específico
+                    if (texture.image && texture.image.width && texture.image.height) {
+                        const aspect = texture.image.width / texture.image.height;
+                        height3D = 2.3;
+                        width3D = height3D * aspect;
+                    }
+                    buildMesh(texture);
+                }, undefined, () => {
+                    const fallback = createCertificateTexture(title, subtitle, accentColor, tag);
+                    buildMesh(fallback);
+                });
+            } else {
+                const fallback = createCertificateTexture(title, subtitle, accentColor, tag);
+                buildMesh(fallback);
+            }
+
+            setTimeout(onWindowResize, 50);
+        }
+
+        function closeCertModal() {
+            document.getElementById('certModal').classList.remove('active');
+            isModalOpen = false;
+        }
+
+        function onWindowResize() {
+            if (!renderer || !camera) return;
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeCertModal();
+        });
+    </script>
+</body>
+
+</html>
