@@ -122,6 +122,31 @@ sr.reveal('#btn-refrescar', {
 
 
 
+/* admin-orders.html */
+sr.reveal('.title-crud-orders', {
+    duration: 3000,
+    origin: 'bottom',
+    distance: '300px'
+});
+
+sr.reveal('#btn-filtros', {
+    duration: 1800,   // velocidad de la animación
+    delay: 1800,       // retardo antes de aparecer
+    opacity: 0,       // empieza invisible
+    scale: 0.9        // opcional: aparece con un leve zoom 
+});
+
+sr.reveal('#btn-refrescar', {
+    duration: 1800,   // velocidad de la animación
+    delay: 1800,       // retardo antes de aparecer
+    opacity: 0,       // empieza invisible
+    scale: 0.9        // opcional: aparece con un leve zoom
+});
+
+
+
+
+
 
 /* admin-resenas.html */
 sr.reveal('.title-crud-reviews', {
