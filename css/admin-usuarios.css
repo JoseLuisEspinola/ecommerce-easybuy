@@ -490,6 +490,7 @@ select#usuario-rol {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: clamp(0.8rem, 1vw, 1rem);
 }
 
 #tabla-usuarios td {
@@ -500,6 +501,7 @@ select#usuario-rol {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: clamp(0.8rem, 1vw, 1rem);
 }
 
 #tabla-usuarios img {

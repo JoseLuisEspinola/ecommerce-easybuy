@@ -479,6 +479,8 @@ nav.abajo .main-name:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    font-size: clamp(0.8rem, 1vw, 1rem);
 }
 
 #tabla-reviews td {
@@ -489,6 +491,8 @@ nav.abajo .main-name:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    font-size: clamp(0.8rem, 1vw, 1rem);
 }
 
 #tabla-reviews img {
@@ -525,7 +529,7 @@ nav.abajo .main-name:hover {
 /* Comentario */
 #tabla-reviews th:nth-child(1),
 #tabla-reviews td:nth-child(1) {
-    width: 25%;
+    width: 31%;
 }
 
 /* ID Producto */
@@ -555,13 +559,13 @@ nav.abajo .main-name:hover {
 /* Fecha */
 #tabla-reviews th:nth-child(6),
 #tabla-reviews td:nth-child(6) {
-    width: 15%;
+    width: 12%;
 }
 
 /* Acciones */
 #tabla-reviews th:nth-child(7),
 #tabla-reviews td:nth-child(7) {
-    width: 15%;
+    width: 12%;
 }
 
 
