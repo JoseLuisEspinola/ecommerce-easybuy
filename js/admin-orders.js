@@ -51,13 +51,13 @@ function renderOrders(orders) {
     orders.forEach(o => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-      <td>${o.id || "—"}</td>
-      <td>${o.userId || "—"}</td>
-      <td>${Array.isArray(o.items) ? o.items.map(i => `${i.name} (x${i.quantity})`).join(", ") : "—"}</td>
-      <td>${o.totalAmount ?? "—"}</td>
-      <td>${o.status || "—"}</td>
-      <td>${o.createdAt ? new Date(o.createdAt).toLocaleString() : "—"}</td>
-    `;
+            <td>${o.id || "—"}</td>
+            <td>${o.userId || "—"}</td>
+            <td>${Array.isArray(o.items) ? o.items.map(i => `${i.name} (x${i.quantity})`).join(", ") : "—"}</td>
+            <td>${o.totalAmount ?? "—"}</td>
+            <td>${o.status || "—"}</td>
+            <td>${o.createdAt ? new Date(o.createdAt).toLocaleString() : "—"}</td>
+        `;
         tbody.appendChild(tr);
     });
 }
