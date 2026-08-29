@@ -51,10 +51,10 @@ sr.reveal('.titulo-productos', {
 
 
 /* ofertas.html */
-sr.reveal('.title-ofertas', {
-    duration: 3000,
+sr.reveal('.titulo-ofertas', {
+    duration: 4000,
     origin: 'bottom',
-    distance: '-100px'
+    distance: '300px'
 });
 
 sr.reveal('.renglon1', {
