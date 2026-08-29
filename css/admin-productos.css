@@ -487,6 +487,39 @@ nav.abajo .main-name:hover {
     display: block;
 }
 
+#tabla-productos td:nth-child(1) {
+    width: 5%;
+}
+
+#tabla-productos td:nth-child(2) {
+    width: 30%;
+}
+
+#tabla-productos td:nth-child(3) {
+    width: 14%;
+}
+
+#tabla-productos td:nth-child(4) {
+    width: 8%;
+}
+
+#tabla-productos td:nth-child(5) {
+    width: 15%;
+}
+
+#tabla-productos td:nth-child(6) {
+    width: 8%;
+}
+
+#tabla-productos td:nth-child(7) {
+    width: 8%;
+}
+
+#tabla-productos td:nth-child(8) {
+    width: 12%;
+}
+
+
 .btn-editar,
 .btn-borrar {
     padding: 6px 8px;

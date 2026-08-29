@@ -95,6 +95,7 @@ function renderProductos(productos) {
             <td>${(p.unitPrice ?? p.price ?? p.precio) ? '$' + (Number(p.unitPrice ?? p.price ?? p.precio).toFixed(2)) : '—'}</td>
             <td>${p.stock ?? p.cantidad ?? 0}</td>
             <td><img src="${p.imageUrl || p.image || p.imagen || ''}" alt="" style="height:40px;"></td>
+            <td>${p.discount + "%" || '—'}</td>
             <td>${p.activo === true ? 'Sí' : 'No'}</td>
             <td class="acciones-cell"></td>
         `;
@@ -155,6 +156,7 @@ function cargarFormularioParaEditar(p) {
     document.getElementById('producto-descripcion').value = p.description || p.descripcion || '';
     document.getElementById('producto-precio').value = p.unitPrice ?? p.price ?? p.precio ?? 0;
     document.getElementById('producto-stock').value = p.stock ?? p.cantidad ?? 0;
+    document.getElementById('producto-descuento').value = p.discount ?? 0;
     document.getElementById('producto-imagen').value = p.image || p.imagen || '';
 }
 
@@ -164,6 +166,7 @@ function limpiarFormulario() {
     document.getElementById('producto-descripcion').value = '';
     document.getElementById('producto-precio').value = '';
     document.getElementById('producto-stock').value = '';
+    document.getElementById('producto-descuento').value = '';
     document.getElementById('producto-imagen').value = '';
 }
 
@@ -180,6 +183,7 @@ async function guardarProducto(e) {
     const descripcion = document.getElementById('producto-descripcion').value.trim();
     const precio = Number(document.getElementById('producto-precio').value);
     const stock = Number(document.getElementById('producto-stock').value) || 0;
+    const descuento = Number(document.getElementById('producto-descuento').value) || 0;
     const imagen = document.getElementById('producto-imagen').value.trim();
 
     // Validaciones básicas antes de enviar
@@ -206,6 +210,7 @@ async function guardarProducto(e) {
         description: descripcion,
         price: precio,
         stock,
+        discount: descuento,
         imageUrl: finalImageUrl
     };
 
