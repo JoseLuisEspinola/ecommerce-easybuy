@@ -395,6 +395,13 @@ nav.abajo .main-name:hover {
     backdrop-filter: blur(26px);
 }
 
+#tabla-orders tr:hover {
+    background: rgba(1, 51, 61, 0.2);
+    backdrop-filter: blur(26px);
+    -webkit-backdrop-filter: blur(26px);
+    cursor: pointer;
+}
+
 #tabla-orders th {
     position: sticky;
     top: 0;

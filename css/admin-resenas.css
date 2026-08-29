@@ -461,8 +461,13 @@ nav.abajo .main-name:hover {
     -webkit-backdrop-filter: blur(26px);
 
     table-layout: fixed;
-    /* Para que las columnas se mantengan en su ancho */
-    /* border: 2px solid blue; */
+}
+
+#tabla-reviews tr:hover {
+    background: rgba(85, 85, 85, 0.2);
+    backdrop-filter: blur(26px);
+    -webkit-backdrop-filter: blur(26px);
+    cursor: pointer;
 }
 
 #tabla-reviews th {
@@ -529,31 +534,31 @@ nav.abajo .main-name:hover {
 /* Comentario */
 #tabla-reviews th:nth-child(1),
 #tabla-reviews td:nth-child(1) {
-    width: 31%;
+    width: 38%;
 }
 
 /* ID Producto */
 #tabla-reviews th:nth-child(2),
 #tabla-reviews td:nth-child(2) {
-    width: 10%;
+    width: 8%;
 }
 
 /* Puntuación */
 #tabla-reviews th:nth-child(3),
 #tabla-reviews td:nth-child(3) {
-    width: 10%;
+    width: 8%;
 }
 
 /* ID Usuario */
 #tabla-reviews th:nth-child(4),
 #tabla-reviews td:nth-child(4) {
-    width: 10%;
+    width: 8%;
 }
 
 /* Usuario */
 #tabla-reviews th:nth-child(5),
 #tabla-reviews td:nth-child(5) {
-    width: 15%;
+    width: 14%;
 }
 
 /* Fecha */

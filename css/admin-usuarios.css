@@ -476,6 +476,13 @@ select#usuario-rol {
     /* border: 2px solid blue; */
 }
 
+#tabla-usuarios tr:hover {
+    background: rgba(2, 56, 100, 0.2);
+    backdrop-filter: blur(26px);
+    -webkit-backdrop-filter: blur(26px);
+    cursor: pointer;
+}
+
 #tabla-usuarios th {
     position: sticky;
     top: 0;
