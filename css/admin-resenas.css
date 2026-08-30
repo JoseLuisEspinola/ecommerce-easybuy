@@ -697,6 +697,18 @@ footer .copyright {
         left: 0;
     }
 
+    .dropdown-content {
+        position: static;
+        background-color: transparent;
+        height: auto;
+    }
+
+    .dropdown-content a {
+        font-size: 1rem;
+        color: var(--cs-color07);
+        font-style: italic;
+    }
+
     .presentacion h1 {
         font-size: 4rem;
     }
