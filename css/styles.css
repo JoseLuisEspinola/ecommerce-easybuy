@@ -444,7 +444,7 @@ nav.abajo .main-name:hover {
 .title-nosotros {
     padding: 100px 3px 2px 3px;
     text-align: center;
-    font-size: clamp(2rem, 3vw, 3rem);
+    font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
     background: linear-gradient(180deg,
             var(--cs-color07),
             var(--cs-color08),
@@ -508,7 +508,7 @@ nav.abajo .main-name:hover {
 
     font-style: normal;
     font-size: clamp(1.152rem, 3vw, 1.8rem);
-    color: var(--cs-color08);
+    color: var(--cs-color10);
     text-shadow: 2px 1px 0px var(--cs-color01);
 
     /* efecto de escribir */
@@ -519,33 +519,33 @@ nav.abajo .main-name:hover {
 }
 
 @keyframes typeCycle {
+
+    /* Inicio */
     0% {
         width: 0ch;
     }
 
-    /* Inicio */
+    /* Escribe */
     33% {
         width: 26ch;
     }
 
-    /* Escribe */
+    /* Pausa */
     66% {
         width: 26ch;
     }
 
-    /* Pausa */
+    /* Borra */
     100% {
         width: 0ch;
     }
-
-    /* Borra */
 }
 
 .container-logo img {
     margin: 20px auto;
     display: flex;
-    max-width: 60px;
-    max-height: 60px;
+    max-width: 50px;
+    max-height: 50px;
     border-radius: 16px;
 }
 
@@ -567,7 +567,7 @@ nav.abajo .main-name:hover {
     margin: 0;
 
     text-align: center;
-    font-size: clamp(2rem, 3vw, 3rem);
+    font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
     background: linear-gradient(180deg,
             var(--cs-color07),
             var(--cs-color08),
@@ -627,7 +627,7 @@ nav.abajo .main-name:hover {
     margin: 0;
 
     text-align: center;
-    font-size: clamp(2rem, 3vw, 3rem);
+    font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
     background: linear-gradient(180deg,
             var(--cs-color07),
             var(--cs-color08),
