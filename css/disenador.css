@@ -96,9 +96,9 @@ nav.abajo {
 }
 
 .main-namesito {
-    color: var(--cs-color07);
-    font-size: 0.72rem;
-    text-shadow: 1px 1px 0 var(--cs-color01);
+    color: var(--cs-color10);
+    font-size: clamp(0.5rem, 2vw, 0.72rem);
+    transition: 0.5s;
 }
 
 /* Preparado para que se vea el nombre del usuario que esta logueado */
@@ -107,7 +107,7 @@ nav.abajo {
     text-shadow: 1px 1px 0px var(--cs-color07);
     padding: 6px;
     margin-left: 10px;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 2vw, 1rem);
     align-items: center;
     cursor: initial;
     opacity: 0;
@@ -173,7 +173,7 @@ li a:hover:after {
 
 
 
-
+/* Submenu */
 .dropdown {
     position: relative;
     /* display: inline-block; */
@@ -218,22 +218,21 @@ li a:hover:after {
 }
 
 .container-user a span {
-    position: absolute;
     /* Posicionar relativo al ícono */
-    top: -8px;
+    position: absolute;
     /* Ajusta según el tamaño del ícono */
-    right: -12px;
+    top: -8px;
     /* Ajusta según la distancia del borde */
+    right: -12px;
     color: var(--cs-color07);
     background-color: red;
     padding: 3px 6px;
-    /* Tamaño del círculo */
-    font-size: 10px;
     /* Tamaño del texto */
-    border-radius: 50%;
+    font-size: 10px;
     /* Convertirlo en un círculo */
-    font-weight: bold;
+    border-radius: 50%;
     /* Hacer que el texto resalte */
+    font-weight: bold;
     text-align: center;
 }
 
@@ -251,7 +250,7 @@ li a:hover:after {
     display: none;
 }
 
-/* nav.abajo .main-name, */
+/* nav.abajo, TODOS los abajo */
 nav.abajo ul li a {
     color: var(--cs-color07);
 }
@@ -262,11 +261,15 @@ nav.abajo ul li a:hover {
 }
 
 nav.abajo .main-name {
-    color: var(--cs-color07);
+    color: var(--cs-color10);
 }
 
 nav.abajo .main-name:hover {
     text-shadow: 2px 2px var(--cs-color01);
+}
+
+nav.abajo .main-namesito {
+    color: var(--cs-color07);
 }
 
 

@@ -7,9 +7,16 @@ sr.reveal('.renglon1', {
     distance: '-300px'
 });
 
+sr.reveal('.productos', {
+    duration: 4000,
+    origin: 'bottom',
+    distance: '-300px'
+});
+
 sr.reveal('.resenas', {
     duration: 4000,
     origin: 'bottom',
+    delay: 1000,
     distance: '-300px'
 });
 
