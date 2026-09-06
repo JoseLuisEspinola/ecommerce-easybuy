@@ -13,11 +13,6 @@
 </head>
 
 <body>
-    <!-- PRELOADER 3D -->
-    <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #202020; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.8s ease;">
-        <!-- El canvas de Three.js se insertará aquí -->
-    </div>
-
     <!-- Barra de navegacion o NavBar -->
     <nav class="navbar">
         <input type="checkbox" id="check">
@@ -269,79 +264,6 @@
 
     <script src="/js/animation.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
-    <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <script>
-        // --- CÓDIGO DEL PRELOADER 3D ---
-        const preloaderDiv = document.getElementById('preloader');
-        const scene3d = new THREE.Scene();
-        const camera3d = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera3d.position.set(0, 0, 5); // Y=0 para centrar verticalmente
-        
-        const renderer3d = new THREE.WebGLRenderer({ antialias: true });
-        renderer3d.setSize(window.innerWidth, window.innerHeight);
-        renderer3d.setClearColor(0x202020);
-        preloaderDiv.appendChild(renderer3d.domElement);
-
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-        scene3d.add(ambientLight);
-        const directionalLight = new THREE.DirectionalLight(0x00ffff, 1);
-        directionalLight.position.set(5, 5, 5);
-        scene3d.add(directionalLight);
-        const pointLight = new THREE.PointLight(0xff00ff, 1);
-        pointLight.position.set(-5, -5, 5);
-        scene3d.add(pointLight);
-
-        let textMesh;
-        const fontLoader = new THREE.FontLoader();
-        fontLoader.load("https://unpkg.com/three@0.128.0/examples/fonts/helvetiker_regular.typeface.json", (font) => {
-            
-            // Simulamos el comportamiento de un 'clamp' de CSS en JavaScript
-            // Tamaño mínimo: 0.35 (para móviles pequeños)
-            // Tamaño máximo: 0.8 (para desktop)
-            // Valor dinámico: window.innerWidth / 1000
-            const clampedSize = Math.max(0.35, Math.min(0.8, window.innerWidth / 1000));
-
-            const geometry = new THREE.TextGeometry("EASYBUY", {
-                font: font,
-                size: clampedSize,
-                height: 0.25,
-                curveSegments: 12,
-                bevelEnabled: true,
-                bevelThickness: 0.03,
-                bevelSize: 0.02,
-                bevelSegments: 5
-            });
-            geometry.center();
-            const material = new THREE.MeshStandardMaterial({
-                color: 0x00ff88,
-                roughness: 0.2,
-                metalness: 0.5
-            });
-            textMesh = new THREE.Mesh(geometry, material);
-            scene3d.add(textMesh);
-        });
-
-        let reqId;
-        function animate3d() {
-            reqId = requestAnimationFrame(animate3d);
-            if (textMesh) textMesh.rotation.y += 0.02; // Un poco más rápido para el preloader
-            renderer3d.render(scene3d, camera3d);
-        }
-        animate3d();
-
-        // Ocultar preloader después de 2.5 segundos
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                preloaderDiv.style.opacity = '0';
-                setTimeout(() => {
-                    preloaderDiv.style.display = 'none';
-                    cancelAnimationFrame(reqId); // Detenemos la animación para no consumir recursos
-                }, 800);
-            }, 2500);
-        });
-        // --- FIN PRELOADER 3D ---
-    </script>
 </body>
 
 </html>

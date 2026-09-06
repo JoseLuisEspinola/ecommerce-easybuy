@@ -9,11 +9,9 @@
     <link rel="stylesheet" href="/css/disenador.css">
     <title>EasyBuy</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="/js/scrollreveal.js"></script> <!-- libreria para animaciones -->
 </head>
 
 <body>
-    <!-- Barra de navegacion o NavBar -->
     <nav class="navbar">
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn">
@@ -23,9 +21,8 @@
             <img src="./img/EasyBuy-logo.svg" class="logo" alt="Imagen Logo">
             <div class="names">
                 <span class="main-name">EasyBuy</span>
-                <span class="main-namesito">La tienda, a tu manera</span>
+                <span class="main-namesito">Tu compra inteligente</span>
             </div>
-            <p class="user-name"></p>
         </a>
         <ul>
             <li><a href="index.html"><i class="fa-solid fa-home" title="Inicio"></i></a></li>
@@ -48,81 +45,117 @@
             <div class="container-user">
                 <a href="#" onclick="cerrarSesion()"><i class="fa fa-power-off" aria-hidden="true"
                         title="Cerar Sesión"></i></a>
+                <a href="registro.html"><i class="fa-solid fa-address-card" title="Registro Usuario"></i></a>
                 <a href="login.html"><i class="fa-solid fa-user" title="Usuario"></i></a>
                 <a href="carrito.html"><i class="fa-solid fa-cart-shopping" title="Carrito"><span>0</span></i></a>
             </div>
         </ul>
     </nav>
 
-    <!-- JavaScript donde se captura la parte de arriba de la pagina: header-->
-    <script>
-        window.addEventListener("scroll", function () {
-            var header = document.querySelector("nav");
-            header.classList.toggle("abajo", window.scrollY > 0);
-        })
-    </script>
+    <!-- Div para el fondo de partículas -->
+    <div id="particles-js"></div>
 
-    <!-- Zona central de la primer pagina -->
-    <section id="zona1">
-        <!-- Integrantes -->
-        <div class="caja">
-            <h1>Ecommerce EASYBUY</h1>
-            <h2>Profesor: Gutierrez</h2>
-            <ul class="lista-integrantes">
-                <li class="integrante">Diseñado por:</li>
-                <li class="integrante">Espinola José Luis</li>
-            </ul>
+    <section class="content-overlay">
+        <h1 class="neon-title">EASYBUY</h1>
+        <h2 class="neon-subtitle">E-COMMERCE SYSTEM</h2>
+
+        <div class="terminal-box">
+            <p>> root@easybuy:~$ whoami</p>
+            <p>> <span>Diseñador: José Luis Espinola</span></p>
+            <p>> <span>Profesor: Nicolas Gutierrez</span></p>
+            <p class="blink">> _</p>
         </div>
 
-        <!-- <div class="presentacio -->
-        <div class="contanier-nombres">
-            <div class="nombre1">
-                DISEÑADOR
-            </div>
-            <div class="nombre2">
-                JOSE LUIS
-            </div>
+        <audio id="background-music" src="/audio/musica-fondo.mp3" autoplay loop></audio>
+        <div class="btn-sino" id="volume-btn" title="Activar/Desactivar Música">
+            <i class="fa-solid fa-volume-high" id="vol-icon"></i>
         </div>
-
-        <section class="texto-zoom">
-            <p class="tracking">ShopEase</p>
-        </section>
-
-
-        <!-- Musica de fondo. Lo podría haber puesto en cualquier lugar. Lo puse SIN la opción de mostrar los controles -->
-        <audio id="background-music" src="/audio/musica-fondo.mp3" autoplay loop>
-            Tu navegador no soporta el elemento de audio.
-        </audio>
-
-        <div class="btn-sino active" id="volume-btn"></div>
     </section>
 
-    <!-- JavaScript para establecer el volumen inicial -->
+    <!-- Partículas JS -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var audio = document.getElementById('background-music');
-            audio.volume = 0.5; // Establecí el volumen al 50%
-
-
-            var toggleButton = document.getElementById('volume-btn');
-            var isMuted = false;
-
-            toggleButton.addEventListener('click', function () {
-                isMuted = !isMuted; // Cambiar el estado de mute
-                audio.volume = isMuted ? 0 : 0.5; // Silenciar o restaurar el volumen
-
-                // Cambiar el estado del botón
-                toggleButton.classList.toggle('active', !isMuted);
-            });
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00ffaa" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#00ffaa",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "out_mode": "out" }
+            },
+            "interactivity": {
+                "detect_on": "window",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 180, "line_linked": { "opacity": 1 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
         });
     </script>
 
-    <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymcus">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var audio = document.getElementById('background-music');
+            audio.volume = 0.5;
+            var toggleButton = document.getElementById('volume-btn');
+            var volIcon = document.getElementById('vol-icon');
+            var isMuted = false;
+
+            // Intentamos que se reproduzca automáticamente. Si el navegador lo bloquea, lo atrapamos silenciosamente.
+            var playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(function (error) {
+                    console.log("El navegador bloqueó el Autoplay. El usuario debe hacer clic para escuchar.");
+                    // Cambiamos el icono para indicar que está pausado/silenciado
+                    volIcon.classList.remove('fa-volume-high');
+                    volIcon.classList.add('fa-volume-xmark');
+                    isMuted = true;
+                });
+            }
+
+            toggleButton.addEventListener('click', function () {
+                // Si estaba pausado por el navegador, lo reproducimos al hacer clic
+                if (audio.paused) {
+                    audio.play();
+                    audio.volume = 0.5;
+                    isMuted = false;
+                    volIcon.classList.remove('fa-volume-xmark');
+                    volIcon.classList.add('fa-volume-high');
+                } else {
+                    // Comportamiento normal de mute
+                    isMuted = !isMuted;
+                    audio.volume = isMuted ? 0 : 0.5;
+                    if (isMuted) {
+                        volIcon.classList.remove('fa-volume-high');
+                        volIcon.classList.add('fa-volume-xmark');
+                    } else {
+                        volIcon.classList.remove('fa-volume-xmark');
+                        volIcon.classList.add('fa-volume-high');
+                    }
+                }
+            });
+
+            // Cursor parpadeante estilo terminal
+            setInterval(() => {
+                const blink = document.querySelector('.blink');
+                if (blink) blink.style.opacity = blink.style.opacity == 0 ? 1 : 0;
+            }, 600);
+        });
     </script>
-    <script src="/js/contador-carrito.js"></script> <!-- referencia solo a poner el numerito actualizado del carrito -->
-    <script src="/js/title.js"></script>
-    <script src="/js/cerrarsesion.js"></script>
-    <script src="/js/user-name.js"></script>
 </body>
 
 </html>
