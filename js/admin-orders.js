@@ -99,14 +99,65 @@ function inicializarAdminOrders() {
         return;
     }
 
-    // Botón refrescar
-    document.getElementById("btn-refrescar").addEventListener("click", fetchOrders);
-
     // Botón filtros
     document.getElementById("btn-filtros").addEventListener("click", () => {
         const panel = document.getElementById("panel-filtros");
         panel.style.display = panel.style.display === "none" ? "flex" : "none";
     });
+
+    // Botón refrescar
+    document.getElementById("btn-refrescar").addEventListener("click", fetchOrders);
+
+    // Botón imprimir
+    document.getElementById("btn-imprimir").addEventListener("click", () => {
+        const tablaHTML = document.getElementById("tabla-orders").outerHTML;
+
+        // Calcular la suma de la columna Total (índice 3)
+        let sumaTotal = 0;
+        const filas = document.querySelectorAll("#tabla-orders tbody tr");
+        filas.forEach(fila => {
+            const celdaTotal = fila.cells[3]; // La columna de 'Total'
+            if (celdaTotal) {
+                const valor = parseFloat(celdaTotal.textContent);
+                if (!isNaN(valor)) {
+                    sumaTotal += valor;
+                }
+            }
+        });
+
+        const ventana = window.open('', '', 'height=600,width=800');
+        ventana.document.write('<html><head><title>Reporte de Órdenes</title>');
+        ventana.document.write('<style>');
+        // === AQUÍ PUEDES CONTROLAR LOS TAMAÑOS DE LETRA ===
+        ventana.document.write('body { font-family: Arial, sans-serif; padding: 20px; font-size: 14px; }'); // Tamaño de texto general
+        ventana.document.write('h1 { text-align: center; color: #333; font-size: 24px; }'); // Tamaño del título principal
+        ventana.document.write('p { font-size: 12px; color: #555; }'); // Tamaño del texto de los párrafos (ej. la fecha)
+        ventana.document.write('table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px; }'); // Tamaño de la letra dentro de la tabla
+        ventana.document.write('th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }');
+        ventana.document.write('th { background-color: #f4f4f4; font-size: 13px; font-weight: bold; }'); // Tamaño de los encabezados de la tabla
+        ventana.document.write('.total-general { text-align: right; font-size: 16px; margin-top: 20px; color: #333; }'); // Tamaño del total
+        // ==================================================
+        ventana.document.write('</style>');
+        ventana.document.write('</head><body>');
+
+        // Aquí defines exactamente qué quieres que aparezca en el papel
+        ventana.document.write('<h1>Reporte de Órdenes - EasyBuy</h1>');
+        ventana.document.write('<p>Fecha de emisión: ' + new Date().toLocaleDateString() + '</p>');
+        ventana.document.write(tablaHTML);
+
+        // Agregar el total sumado
+        ventana.document.write('<h3 class="total-general">Total General: $' + sumaTotal.toFixed(2) + '</h3>');
+
+        ventana.document.write('</body></html>');
+        ventana.document.close();
+        ventana.focus();
+
+        setTimeout(() => {
+            ventana.print();
+            ventana.close();
+        }, 250);
+    });
+
 
     // Escuchar cambios en filtros
     const filtros = document.querySelectorAll("#panel-filtros input, #panel-filtros select");

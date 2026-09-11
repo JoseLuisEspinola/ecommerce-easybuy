@@ -150,7 +150,12 @@ sr.reveal('#btn-refrescar', {
     scale: 0.9        // opcional: aparece con un leve zoom
 });
 
-
+sr.reveal('#btn-imprimir', {
+    duration: 1800,   // velocidad de la animación
+    delay: 1800,       // retardo antes de aparecer
+    opacity: 0,       // empieza invisible
+    scale: 0.9        // opcional: aparece con un leve zoom
+});
 
 
 
